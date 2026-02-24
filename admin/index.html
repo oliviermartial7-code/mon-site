@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration — Conseil Régional du Sud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A237E;
+      --secondary: #0288D1;
+      --accent: #7CB342;
+      --danger: #e53935;
+      --white: #fff;
+      --light: #F5F7FA;
+      --text: #1a1a2e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #0D1642 0%, #1A237E 50%, #0288D1 100%);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px 40px;
+      width: 100%; max-width: 420px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+      animation: fadeUp 0.5s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .login-logo { text-align: center; margin-bottom: 32px; }
+    .logo-circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+    }
+    .logo-circle span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 1.4rem; color: white;
+    }
+    .login-logo h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1rem; color: var(--primary); margin-bottom: 4px;
+    }
+    .login-logo p { font-size: 0.78rem; color: #888; }
+    .flag-bar { display: flex; height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 32px; }
+    .flag-bar span { flex: 1; }
+    .login-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--text); margin-bottom: 6px; }
+    .login-sub { font-size: 0.82rem; color: #888; margin-bottom: 28px; }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 8px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+    .field-wrap { position: relative; }
+    .field-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #aaa; }
+    .field input {
+      width: 100%; padding: 13px 14px 13px 42px;
+      border: 2px solid #e8ecf4; border-radius: 10px;
+      font-size: 0.95rem; color: var(--text); background: var(--light);
+      outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus { border-color: var(--secondary); background: white; }
+    .toggle-pwd {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      cursor: pointer; background: none; border: none; color: #aaa;
+    }
+    .btn-login {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white; border: none; border-radius: 10px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; margin-top: 8px;
+    }
+    .error-msg {
+      background: #fff5f5; border: 1px solid #fed7d7; color: var(--danger);
+      border-radius: 8px; padding: 12px 16px; font-size: 0.85rem;
+      margin-bottom: 16px; display: none; align-items: center; gap: 8px;
+    }
+    .error-msg.show { display: flex; }
+    .login-footer { text-align: center; margin-top: 24px; font-size: 0.75rem; color: #bbb; }
+    .login-footer a { color: var(--secondary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-circle"><span>CRS</span></div>
+      <h1>Conseil Régional du Sud</h1>
+      <p>Espace Administration · South Regional Council</p>
+    </div>
+    <div class="flag-bar">
+      <span style="background:#007A5E"></span>
+      <span style="background:#CE1126"></span>
+      <span style="background:#FCD116"></span>
+    </div>
+    <div class="login-title">Connexion</div>
+    <div class="login-sub">Accès réservé aux administrateurs autorisés</div>
+    <div class="error-msg" id="errorMsg">
+      <span>⚠️</span><span>Identifiant ou mot de passe incorrect.</span>
+    </div>
+    <div class="field">
+      <label>Nom d'utilisateur</label>
+      <div class="field-wrap">
+        <span class="field-icon">👤</span>
+        <input type="text" id="username" placeholder="admin">
+      </div>
+    </div>
+    <div class="field">
+      <label>Mot de passe</label>
+      <div class="field-wrap">
+        <span class="field-icon">🔒</span>
+        <input type="password" id="password" placeholder="••••••••">
+        <button class="toggle-pwd" onclick="togglePwd()" type="button" id="eyeBtn">👁</button>
+      </div>
+    </div>
+    <button class="btn-login" onclick="login()">Se connecter →</button>
+    <div class="login-footer">
+      <a href="../index.html">← Retour au site public</a>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+    function login() {
+      const u = document.getElementById('username').value.trim();
+      const p = document.getElementById('password').value;
+      if (u === 'admin' && p === 'Admin1') {
+        sessionStorage.setItem('crs_admin', 'true');
+        window.location.href = 'dashboard.html';
+      } else {
+        document.getElementById('errorMsg').classList.add('show');
+        setTimeout(() => document.getElementById('errorMsg').classList.remove('show'), 3000);
+      }
+    }
+    function togglePwd() {
+      const p = document.getElementById('password');
+      const b = document.getElementById('eyeBtn');
+      p.type = p.type === 'password' ? 'text' : 'password';
+      b.textContent = p.type === 'password' ? '👁' : '🙈';
+    }
+    if (sessionStorage.getItem('crs_admin') === 'true') window.location.href = 'dashboard.html';
+  </script>
+</body>
+</html>
