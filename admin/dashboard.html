@@ -15,374 +15,106 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Open Sans', sans-serif; background: var(--light); color: var(--text); }
-
-    /* ===== SIDEBAR ===== */
     .sidebar {
-      position: fixed; left: 0; top: 0; bottom: 0;
-      width: var(--sidebar-w);
+      position: fixed; left: 0; top: 0; bottom: 0; width: var(--sidebar-w);
       background: linear-gradient(180deg, #0D1642 0%, #1A237E 100%);
-      display: flex; flex-direction: column;
-      z-index: 100; overflow-y: auto;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
     }
-    .sidebar-logo {
-      padding: 28px 24px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .sidebar-logo .logo-row {
-      display: flex; align-items: center; gap: 12px;
-    }
+    .sidebar-logo { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .logo-row { display: flex; align-items: center; gap: 12px; }
     .logo-badge {
       width: 44px; height: 44px; border-radius: 12px;
       background: linear-gradient(135deg, var(--secondary), var(--accent));
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif; font-weight: 900;
-      font-size: 1rem; color: white; flex-shrink: 0;
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1rem; color: white;
     }
-    .logo-info .li-name {
-      font-family: 'Montserrat', sans-serif; font-weight: 700;
-      font-size: 0.85rem; color: white; line-height: 1.3;
-    }
-    .logo-info .li-role {
-      font-size: 0.7rem; color: rgba(255,255,255,0.5);
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .flag-bar-side {
-      display: flex; height: 3px; margin-top: 16px; border-radius: 2px; overflow: hidden;
-    }
+    .li-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; color: white; line-height: 1.3; }
+    .li-role { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+    .flag-bar-side { display: flex; height: 3px; margin-top: 16px; border-radius: 2px; overflow: hidden; }
     .flag-bar-side span { flex: 1; }
-
     .sidebar-nav { padding: 16px 0; flex: 1; }
-    .nav-section-label {
-      font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.3);
-      text-transform: uppercase; letter-spacing: 0.15em;
-      padding: 16px 24px 8px;
-    }
-    .nav-item {
-      display: flex; align-items: center; gap: 12px;
-      padding: 11px 24px; cursor: pointer;
-      font-size: 0.88rem; color: rgba(255,255,255,0.65);
-      transition: all 0.2s; border-left: 3px solid transparent;
-      text-decoration: none;
-    }
+    .nav-section-label { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.15em; padding: 16px 24px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 24px; cursor: pointer; font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: all 0.2s; border-left: 3px solid transparent; text-decoration: none; }
     .nav-item:hover { background: rgba(255,255,255,0.07); color: white; }
-    .nav-item.active {
-      background: rgba(2,136,209,0.2); color: white;
-      border-left-color: var(--secondary);
-    }
-    .nav-item .ni-icon { font-size: 1rem; width: 20px; text-align: center; }
-    .nav-item .ni-badge {
-      margin-left: auto; background: var(--secondary);
-      color: white; font-size: 0.65rem; font-weight: 700;
-      padding: 2px 8px; border-radius: 100px;
-    }
-
-    .sidebar-footer {
-      padding: 16px 24px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .user-row {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .user-avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--secondary));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 0.85rem; color: white;
-    }
-    .user-info .u-name { font-size: 0.85rem; font-weight: 600; color: white; }
-    .user-info .u-role { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
-    .btn-logout {
-      margin-left: auto; background: rgba(229,57,53,0.15);
-      border: 1px solid rgba(229,57,53,0.3); color: #ef9a9a;
-      border-radius: 6px; padding: 5px 10px; font-size: 0.75rem;
-      cursor: pointer; transition: all 0.2s; white-space: nowrap;
-    }
-    .btn-logout:hover { background: rgba(229,57,53,0.3); color: white; }
-
-    /* ===== MAIN ===== */
-    .main {
-      margin-left: var(--sidebar-w);
-      min-height: 100vh;
-    }
-    .topbar {
-      background: white; padding: 16px 32px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 50;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    .topbar-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700; font-size: 1.1rem; color: var(--primary);
-    }
+    .nav-item.active { background: rgba(2,136,209,0.2); color: white; border-left-color: var(--secondary); }
+    .ni-icon { font-size: 1rem; width: 20px; text-align: center; }
+    .ni-badge { margin-left: auto; background: var(--secondary); color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+    .sidebar-footer { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .user-row { display: flex; align-items: center; gap: 10px; }
+    .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--secondary)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; }
+    .u-name { font-size: 0.85rem; font-weight: 600; color: white; }
+    .u-role { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
+    .btn-logout { margin-left: auto; background: rgba(229,57,53,0.15); border: 1px solid rgba(229,57,53,0.3); color: #ef9a9a; border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer; }
+    .main { margin-left: var(--sidebar-w); min-height: 100vh; }
+    .topbar { background: white; padding: 16px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .topbar-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--primary); }
     .topbar-right { display: flex; gap: 12px; align-items: center; }
     .topbar-date { font-size: 0.78rem; color: var(--text-light); }
-    .btn-view-site {
-      background: var(--primary); color: white;
-      padding: 8px 16px; border-radius: 8px; text-decoration: none;
-      font-size: 0.8rem; font-weight: 600; font-family: 'Montserrat', sans-serif;
-      transition: all 0.2s;
-    }
-    .btn-view-site:hover { background: var(--secondary); }
-
+    .btn-view-site { background: var(--primary); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 600; }
     .content { padding: 32px; }
-
-    /* ===== STATS CARDS ===== */
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-      margin-bottom: 32px;
-    }
-    .stat-card {
-      background: white; border-radius: 14px; padding: 24px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      border-left: 4px solid transparent;
-      transition: transform 0.2s;
-    }
-    .stat-card:hover { transform: translateY(-2px); }
-    .stat-card.c-blue  { border-color: var(--secondary); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
+    .stat-card { background: white; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); border-left: 4px solid transparent; }
+    .stat-card.c-blue { border-color: var(--secondary); }
     .stat-card.c-green { border-color: var(--accent); }
-    .stat-card.c-orange{ border-color: var(--warning); }
-    .stat-card.c-purple{ border-color: #7b1fa2; }
+    .stat-card.c-orange { border-color: var(--warning); }
+    .stat-card.c-purple { border-color: #7b1fa2; }
     .stat-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
     .stat-value { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; color: var(--primary); }
     .stat-label { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
-
-    /* ===== SECTIONS ===== */
     .section { display: none; }
     .section.active { display: block; }
-
-    .section-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 24px;
-    }
-    .section-header h2 {
-      font-family: 'Montserrat', sans-serif; font-weight: 800;
-      font-size: 1.4rem; color: var(--primary);
-    }
-    .btn-add {
-      background: var(--secondary); color: white;
-      padding: 10px 20px; border-radius: 8px; border: none;
-      font-family: 'Montserrat', sans-serif; font-weight: 700;
-      font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .btn-add:hover { background: var(--primary); transform: translateY(-1px); }
-
-    /* ===== TABLE ===== */
-    .table-card {
-      background: white; border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05); overflow: hidden;
-    }
-    .table-search {
-      padding: 16px 20px; border-bottom: 1px solid var(--border);
-      display: flex; gap: 12px; align-items: center;
-    }
-    .table-search input {
-      flex: 1; padding: 8px 14px; border: 1px solid var(--border);
-      border-radius: 8px; font-size: 0.88rem; outline: none;
-      transition: border-color 0.2s;
-    }
-    .table-search input:focus { border-color: var(--secondary); }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .section-header h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--primary); }
+    .btn-add { background: var(--secondary); color: white; padding: 10px 20px; border-radius: 8px; border: none; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+    .table-card { background: white; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); overflow: hidden; }
+    .table-search { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+    .table-search input { width: 100%; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; outline: none; }
     table { width: 100%; border-collapse: collapse; }
     thead { background: var(--light); }
-    thead th {
-      padding: 12px 16px; text-align: left;
-      font-size: 0.75rem; font-weight: 700; color: var(--text-light);
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    tbody tr {
-      border-top: 1px solid var(--border);
-      transition: background 0.15s;
-    }
+    thead th { padding: 12px 16px; text-align: left; font-size: 0.75rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; }
+    tbody tr { border-top: 1px solid var(--border); }
     tbody tr:hover { background: #f8faff; }
     tbody td { padding: 14px 16px; font-size: 0.88rem; vertical-align: middle; }
-    .badge {
-      padding: 3px 10px; border-radius: 100px;
-      font-size: 0.72rem; font-weight: 700;
-    }
-    .badge-green  { background: #e8f5e9; color: #388e3c; }
-    .badge-blue   { background: #e3f2fd; color: #0277bd; }
+    .badge { padding: 3px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; }
+    .badge-green { background: #e8f5e9; color: #388e3c; }
+    .badge-blue { background: #e3f2fd; color: #0277bd; }
     .badge-orange { background: #fff3e0; color: #e65100; }
-    .badge-purple { background: #f3e5f5; color: #7b1fa2; }
-    .badge-gray   { background: #f5f5f5; color: #616161; }
+    .badge-gray { background: #f5f5f5; color: #616161; }
     .action-btns { display: flex; gap: 6px; }
-    .btn-edit, .btn-del {
-      padding: 5px 12px; border-radius: 6px; font-size: 0.78rem;
-      font-weight: 600; cursor: pointer; border: none; transition: all 0.15s;
-    }
+    .btn-edit, .btn-del { padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: none; }
     .btn-edit { background: #e3f2fd; color: #0277bd; }
-    .btn-edit:hover { background: var(--secondary); color: white; }
-    .btn-del  { background: #ffebee; color: var(--danger); }
-    .btn-del:hover  { background: var(--danger); color: white; }
-
-    /* ===== MODAL ===== */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.55);
-      z-index: 200; display: none; align-items: center; justify-content: center;
-      padding: 20px;
-    }
+    .btn-del { background: #ffebee; color: var(--danger); }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; }
     .modal-overlay.open { display: flex; }
-    .modal {
-      background: white; border-radius: 16px;
-      width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
-      animation: modalIn 0.25s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.95) translateY(16px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .modal-header {
-      padding: 24px 28px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .modal-header h3 {
-      font-family: 'Montserrat', sans-serif; font-weight: 700;
-      font-size: 1.1rem; color: var(--primary);
-    }
-    .modal-close {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--light); border: none; cursor: pointer;
-      font-size: 1rem; display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s;
-    }
-    .modal-close:hover { background: #ffebee; }
+    .modal { background: white; border-radius: 16px; width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto; box-shadow: 0 32px 80px rgba(0,0,0,0.3); }
+    .modal-header { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .modal-header h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--primary); }
+    .modal-close { width: 32px; height: 32px; border-radius: 8px; background: var(--light); border: none; cursor: pointer; font-size: 1rem; }
     .modal-body { padding: 24px 28px; }
     .form-field { margin-bottom: 20px; }
-    .form-field label {
-      display: block; font-size: 0.78rem; font-weight: 700;
-      color: var(--text); margin-bottom: 7px; text-transform: uppercase;
-      letter-spacing: 0.05em; font-family: 'Montserrat', sans-serif;
-    }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%; padding: 11px 14px;
-      border: 2px solid var(--border); border-radius: 10px;
-      font-size: 0.9rem; font-family: 'Open Sans', sans-serif;
-      color: var(--text); outline: none; transition: border-color 0.2s;
-      background: var(--light);
-    }
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: var(--secondary);
-      background: white;
-    }
+    .form-field label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text); margin-bottom: 7px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .form-field input, .form-field select, .form-field textarea { width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: 10px; font-size: 0.9rem; color: var(--text); outline: none; background: var(--light); }
     .form-field textarea { resize: vertical; min-height: 90px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    /* Zone upload fichier/photo */
-    .upload-zone {
-      border: 2px dashed var(--border); border-radius: 10px;
-      padding: 24px; text-align: center; cursor: pointer;
-      transition: all 0.2s; background: var(--light);
-    }
-    .upload-zone:hover { border-color: var(--secondary); background: #e3f2fd20; }
-    .upload-zone .uz-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
-    .upload-zone p { font-size: 0.82rem; color: var(--text-light); }
-    .upload-zone input[type=file] { display: none; }
-    .file-preview {
-      margin-top: 10px; padding: 10px 14px;
-      background: white; border-radius: 8px; border: 1px solid var(--border);
-      font-size: 0.82rem; color: var(--text-light);
-      display: none; align-items: center; gap: 8px;
-    }
-    .file-preview.show { display: flex; }
-
-    .modal-footer {
-      padding: 16px 28px 24px;
-      display: flex; gap: 12px; justify-content: flex-end;
-    }
-    .btn-cancel {
-      padding: 10px 24px; border-radius: 8px;
-      border: 2px solid var(--border); background: white;
-      font-family: 'Montserrat', sans-serif; font-weight: 600;
-      font-size: 0.88rem; cursor: pointer; transition: all 0.2s; color: var(--text-light);
-    }
-    .btn-cancel:hover { border-color: var(--danger); color: var(--danger); }
-    .btn-save {
-      padding: 10px 28px; border-radius: 8px;
-      border: none; background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white; font-family: 'Montserrat', sans-serif; font-weight: 700;
-      font-size: 0.88rem; cursor: pointer; transition: all 0.2s;
-    }
-    .btn-save:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,35,126,0.3); }
-
-    /* ===== TOAST ===== */
-    .toast {
-      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
-      background: var(--success); color: white;
-      padding: 14px 20px; border-radius: 10px;
-      font-size: 0.88rem; font-weight: 600;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      display: flex; align-items: center; gap: 10px;
-      transform: translateY(80px); opacity: 0;
-      transition: all 0.3s; pointer-events: none;
-    }
+    .modal-footer { padding: 16px 28px 24px; display: flex; gap: 12px; justify-content: flex-end; }
+    .btn-cancel { padding: 10px 24px; border-radius: 8px; border: 2px solid var(--border); background: white; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.88rem; cursor: pointer; color: var(--text-light); }
+    .btn-save { padding: 10px 28px; border-radius: 8px; border: none; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; }
+    .toast { position: fixed; bottom: 28px; right: 28px; z-index: 9999; background: var(--success); color: white; padding: 14px 20px; border-radius: 10px; font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 10px; transform: translateY(80px); opacity: 0; transition: all 0.3s; pointer-events: none; }
     .toast.show { transform: translateY(0); opacity: 1; }
     .toast.error { background: var(--danger); }
-
-    /* ===== GALERIE PHOTOS ===== */
-    .photo-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-    }
-    .photo-item {
-      background: white; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: transform 0.2s;
-    }
-    .photo-item:hover { transform: translateY(-3px); }
-    .photo-thumb {
-      width: 100%; height: 120px; object-fit: cover;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem;
-    }
-    .photo-info { padding: 10px 12px; }
-    .photo-name { font-size: 0.8rem; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .photo-size { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
-    .photo-actions { display: flex; gap: 6px; margin-top: 8px; }
-
-    /* ===== DOCUMENTS ===== */
-    .doc-list { display: flex; flex-direction: column; gap: 12px; }
-    .doc-item {
-      background: white; border-radius: 12px; padding: 16px 20px;
-      display: flex; align-items: center; gap: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: transform 0.2s;
-    }
-    .doc-item:hover { transform: translateX(4px); }
-    .doc-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; flex-shrink: 0;
-    }
-    .doc-pdf  { background: #ffebee; }
-    .doc-word { background: #e3f2fd; }
-    .doc-img  { background: #e8f5e9; }
-    .doc-info { flex: 1; }
-    .doc-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
-    .doc-meta { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .photo-grid  { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .sidebar { transform: translateX(-100%); }
-      .main { margin-left: 0; }
-    }
+    .loading { text-align: center; padding: 40px; color: var(--text-light); }
+    .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--secondary); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .db-badge { background: #e8f5e9; color: #388e3c; padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; }
   </style>
 </head>
 <body>
 
-<!-- ===== SIDEBAR ===== -->
 <div class="sidebar">
   <div class="sidebar-logo">
     <div class="logo-row">
       <div class="logo-badge">CRS</div>
-      <div class="logo-info">
+      <div>
         <div class="li-name">Conseil Régional<br>du Sud</div>
         <div class="li-role">Administration</div>
       </div>
@@ -393,45 +125,32 @@
       <span style="background:#FCD116"></span>
     </div>
   </div>
-
   <nav class="sidebar-nav">
     <div class="nav-section-label">Tableau de bord</div>
-    <a class="nav-item active" onclick="showSection('dashboard')">
+    <a class="nav-item active" onclick="showSection('dashboard',this)">
       <span class="ni-icon">📊</span> Vue d'ensemble
     </a>
-
     <div class="nav-section-label">Contenu</div>
-    <a class="nav-item" onclick="showSection('actualites')">
+    <a class="nav-item" onclick="showSection('actualites',this)">
       <span class="ni-icon">📰</span> Actualités
-      <span class="ni-badge" id="badge-actu">4</span>
+      <span class="ni-badge" id="badge-actu">0</span>
     </a>
-    <a class="nav-item" onclick="showSection('publications')">
+    <a class="nav-item" onclick="showSection('publications',this)">
       <span class="ni-icon">📄</span> Publications
-      <span class="ni-badge" id="badge-pub">3</span>
+      <span class="ni-badge" id="badge-pub">0</span>
     </a>
-    <a class="nav-item" onclick="showSection('projets')">
+    <a class="nav-item" onclick="showSection('projets',this)">
       <span class="ni-icon">🏗️</span> Projets
     </a>
-    <a class="nav-item" onclick="showSection('photos')">
-      <span class="ni-icon">🖼️</span> Médiathèque
-    </a>
-    <a class="nav-item" onclick="showSection('documents')">
-      <span class="ni-icon">📁</span> Documents
-    </a>
-
     <div class="nav-section-label">Site</div>
-    <a class="nav-item" onclick="showSection('communes')">
-      <span class="ni-icon">📍</span> Communes
-    </a>
-    <a class="nav-item" onclick="showSection('parametres')">
+    <a class="nav-item" onclick="showSection('parametres',this)">
       <span class="ni-icon">⚙️</span> Paramètres
     </a>
   </nav>
-
   <div class="sidebar-footer">
     <div class="user-row">
       <div class="user-avatar">A</div>
-      <div class="user-info">
+      <div>
         <div class="u-name">Administrateur</div>
         <div class="u-role">Super Admin</div>
       </div>
@@ -440,11 +159,11 @@
   </div>
 </div>
 
-<!-- ===== MAIN ===== -->
 <div class="main">
   <div class="topbar">
     <div class="topbar-title" id="pageTitle">Vue d'ensemble</div>
     <div class="topbar-right">
+      <span class="db-badge">🟢 Neon connecté</span>
       <span class="topbar-date" id="currentDate"></span>
       <a href="../index.html" target="_blank" class="btn-view-site">🌐 Voir le site</a>
     </div>
@@ -452,48 +171,44 @@
 
   <div class="content">
 
-    <!-- ===== DASHBOARD ===== -->
+    <!-- DASHBOARD -->
     <div class="section active" id="sec-dashboard">
       <div class="stats-grid">
         <div class="stat-card c-blue">
           <span class="stat-icon">📰</span>
-          <div class="stat-value" id="count-actu">4</div>
+          <div class="stat-value" id="count-actu">—</div>
           <div class="stat-label">Actualités publiées</div>
         </div>
         <div class="stat-card c-green">
           <span class="stat-icon">📄</span>
-          <div class="stat-value" id="count-pub">3</div>
+          <div class="stat-value" id="count-pub">—</div>
           <div class="stat-label">Publications</div>
         </div>
         <div class="stat-card c-orange">
-          <span class="stat-icon">🖼️</span>
-          <div class="stat-value" id="count-photos">5</div>
-          <div class="stat-label">Photos / Médias</div>
+          <span class="stat-icon">🏗️</span>
+          <div class="stat-value" id="count-proj">—</div>
+          <div class="stat-label">Projets</div>
         </div>
         <div class="stat-card c-purple">
-          <span class="stat-icon">📁</span>
-          <div class="stat-value" id="count-docs">0</div>
-          <div class="stat-label">Documents</div>
+          <span class="stat-icon">🗄️</span>
+          <div class="stat-value" style="font-size:1rem;margin-top:8px;">Neon</div>
+          <div class="stat-label">Base de données active</div>
         </div>
       </div>
-
-      <!-- Dernières actualités -->
       <div class="table-card">
-        <div style="padding:20px 20px 0; font-family:'Montserrat',sans-serif; font-weight:700; color:var(--primary); font-size:1rem;">
+        <div style="padding:20px;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);">
           Dernières actualités
         </div>
-        <div style="padding:0 4px;">
-          <table id="dash-actu-table">
-            <thead><tr>
-              <th>Titre</th><th>Catégorie</th><th>Date</th><th>Statut</th>
-            </tr></thead>
-            <tbody id="dash-actu-body"></tbody>
-          </table>
-        </div>
+        <table>
+          <thead><tr><th>Titre</th><th>Catégorie</th><th>Date</th><th>Statut</th></tr></thead>
+          <tbody id="dash-actu-body">
+            <tr><td colspan="4" class="loading"><div class="spinner"></div><br>Chargement...</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- ===== ACTUALITÉS ===== -->
+    <!-- ACTUALITÉS -->
     <div class="section" id="sec-actualites">
       <div class="section-header">
         <h2>📰 Gestion des Actualités</h2>
@@ -501,18 +216,18 @@
       </div>
       <div class="table-card">
         <div class="table-search">
-          <input type="text" placeholder="🔍 Rechercher une actualité..." oninput="filterTable(this,'actu-body')">
+          <input type="text" placeholder="🔍 Rechercher..." oninput="filterTable(this,'actu-body')">
         </div>
         <table>
-          <thead><tr>
-            <th>Titre</th><th>Catégorie</th><th>Date</th><th>Statut</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="actu-body"></tbody>
+          <thead><tr><th>Titre</th><th>Catégorie</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead>
+          <tbody id="actu-body">
+            <tr><td colspan="5" class="loading"><div class="spinner"></div><br>Chargement...</td></tr>
+          </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ===== PUBLICATIONS ===== -->
+    <!-- PUBLICATIONS -->
     <div class="section" id="sec-publications">
       <div class="section-header">
         <h2>📄 Publications officielles</h2>
@@ -523,15 +238,15 @@
           <input type="text" placeholder="🔍 Rechercher..." oninput="filterTable(this,'pub-body')">
         </div>
         <table>
-          <thead><tr>
-            <th>Titre</th><th>Type</th><th>Date</th><th>Fichier</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="pub-body"></tbody>
+          <thead><tr><th>Titre</th><th>Type</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="pub-body">
+            <tr><td colspan="4" class="loading"><div class="spinner"></div><br>Chargement...</td></tr>
+          </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ===== PROJETS ===== -->
+    <!-- PROJETS -->
     <div class="section" id="sec-projets">
       <div class="section-header">
         <h2>🏗️ Gestion des Projets</h2>
@@ -539,101 +254,36 @@
       </div>
       <div class="table-card">
         <table>
-          <thead><tr>
-            <th>Nom du projet</th><th>Budget</th><th>Avancement</th><th>Statut</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="proj-body"></tbody>
+          <thead><tr><th>Nom du projet</th><th>Budget</th><th>Avancement</th><th>Statut</th><th>Actions</th></tr></thead>
+          <tbody id="proj-body">
+            <tr><td colspan="5" class="loading"><div class="spinner"></div><br>Chargement...</td></tr>
+          </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ===== PHOTOS ===== -->
-    <div class="section" id="sec-photos">
-      <div class="section-header">
-        <h2>🖼️ Médiathèque — Photos</h2>
-        <button class="btn-add" onclick="openModal('photo')">＋ Ajouter des photos</button>
-      </div>
-      <div class="photo-grid" id="photo-grid"></div>
-    </div>
-
-    <!-- ===== DOCUMENTS ===== -->
-    <div class="section" id="sec-documents">
-      <div class="section-header">
-        <h2>📁 Documents officiels</h2>
-        <button class="btn-add" onclick="openModal('doc')">＋ Ajouter un document</button>
-      </div>
-      <div class="doc-list" id="doc-list">
-        <div style="text-align:center;padding:40px;color:var(--text-light);">
-          <span style="font-size:3rem;">📂</span><br><br>
-          Aucun document pour l'instant.<br>
-          <small>Cliquez sur "Ajouter un document" pour commencer.</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== COMMUNES ===== -->
-    <div class="section" id="sec-communes">
-      <div class="section-header">
-        <h2>📍 Communes de la Région</h2>
-        <button class="btn-add" onclick="openModal('commune')">＋ Modifier une commune</button>
-      </div>
-      <div class="table-card">
-        <table>
-          <thead><tr>
-            <th>Commune</th><th>Département</th><th>Maire</th><th>Téléphone</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="commune-body"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ===== PARAMÈTRES ===== -->
+    <!-- PARAMÈTRES -->
     <div class="section" id="sec-parametres">
-      <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--primary);margin-bottom:24px;">⚙️ Paramètres du site</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-        <div class="table-card" style="padding:24px;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);margin-bottom:20px;">Informations générales</h3>
-          <div class="form-field">
-            <label>Nom du site</label>
-            <input type="text" value="Conseil Régional du Sud">
-          </div>
-          <div class="form-field">
-            <label>Devise</label>
-            <input type="text" value="Le SUD, une région d'avenir, de solidarité et de bonheur partagé.">
-          </div>
-          <div class="form-field">
-            <label>Email de contact</label>
-            <input type="email" value="contact@conseilregionalsud.cm">
-          </div>
-          <div class="form-field">
-            <label>Téléphone</label>
-            <input type="text" value="(+237) 222 28 44 40">
-          </div>
-          <button class="btn-save" onclick="showToast('Paramètres sauvegardés ✓')">💾 Sauvegarder</button>
+      <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--primary);margin-bottom:24px;">⚙️ Paramètres</h2>
+      <div class="table-card" style="padding:24px;max-width:500px;">
+        <div class="form-field">
+          <label>Email de contact</label>
+          <input type="email" value="contact@conseilregionalsud.cm">
         </div>
-        <div class="table-card" style="padding:24px;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);margin-bottom:20px;">Réseaux sociaux</h3>
-          <div class="form-field">
-            <label>Facebook</label>
-            <input type="url" value="https://www.facebook.com/share/18ckuwk695/">
-          </div>
-          <div class="form-field">
-            <label>WhatsApp</label>
-            <input type="text" value="https://wa.me/237699000000">
-          </div>
-          <div class="form-field">
-            <label>Changer le mot de passe admin</label>
-            <input type="password" placeholder="Nouveau mot de passe">
-          </div>
-          <button class="btn-save" onclick="showToast('Réseaux sociaux mis à jour ✓')">💾 Sauvegarder</button>
+        <div class="form-field">
+          <label>Téléphone</label>
+          <input type="text" value="(+237) 222 28 44 40">
         </div>
+        <div class="form-field">
+          <label>Facebook</label>
+          <input type="url" value="https://www.facebook.com/share/18ckuwk695/">
+        </div>
+        <button class="btn-save" onclick="showToast('Paramètres sauvegardés ✓')">💾 Sauvegarder</button>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /main -->
-
-<!-- ===== MODALS ===== -->
+  </div>
+</div>
 
 <!-- Modal Actualité -->
 <div class="modal-overlay" id="modal-actu">
@@ -645,7 +295,7 @@
     <div class="modal-body">
       <div class="form-row">
         <div class="form-field">
-          <label>Date de publication</label>
+          <label>Date</label>
           <input type="date" id="actu-date">
         </div>
         <div class="form-field">
@@ -657,31 +307,18 @@
             <option>Énergie</option>
             <option>Agriculture</option>
             <option>Santé</option>
-            <option>Éducation</option>
             <option>Environnement</option>
             <option>Partenariats</option>
-            <option>Transparence</option>
           </select>
         </div>
       </div>
       <div class="form-field">
-        <label>Titre de l'actualité</label>
-        <input type="text" id="actu-title" placeholder="Ex: Inauguration du nouveau marché de Kribi">
+        <label>Titre</label>
+        <input type="text" id="actu-title" placeholder="Titre de l'actualité">
       </div>
       <div class="form-field">
-        <label>Résumé (2-3 phrases)</label>
-        <textarea id="actu-excerpt" placeholder="Décrivez brièvement l'actualité..."></textarea>
-      </div>
-      <div class="form-field">
-        <label>Photo (optionnel)</label>
-        <div class="upload-zone" onclick="document.getElementById('actu-file').click()">
-          <span class="uz-icon">📸</span>
-          <p>Cliquez pour choisir une photo<br><small>JPG, PNG — max 5 Mo</small></p>
-          <input type="file" id="actu-file" accept="image/*" onchange="previewFile(this,'actu-preview')">
-        </div>
-        <div class="file-preview" id="actu-preview">
-          <span>📎</span><span id="actu-preview-name"></span>
-        </div>
+        <label>Résumé</label>
+        <textarea id="actu-resume" placeholder="Décrivez brièvement..."></textarea>
       </div>
       <div class="form-field">
         <label>Statut</label>
@@ -719,30 +356,16 @@
             <option>Budget</option>
             <option>Communiqué officiel</option>
             <option>Appel d'offres</option>
-            <option>Compte rendu</option>
-            <option>Autre</option>
           </select>
         </div>
       </div>
       <div class="form-field">
         <label>Titre</label>
-        <input type="text" id="pub-title" placeholder="Ex: Délibération n°001/CRS/2026">
+        <input type="text" id="pub-title" placeholder="Titre de la publication">
       </div>
       <div class="form-field">
-        <label>Description courte</label>
-        <textarea id="pub-desc" placeholder="Décrivez brièvement ce document..."></textarea>
-      </div>
-      <div class="form-field">
-        <label>Fichier (PDF, Word, Excel...)</label>
-        <div class="upload-zone" onclick="document.getElementById('pub-file').click()">
-          <span class="uz-icon">📎</span>
-          <p>Cliquez pour choisir un fichier<br><small>PDF, DOCX, XLSX — max 20 Mo</small></p>
-          <input type="file" id="pub-file" accept=".pdf,.doc,.docx,.xls,.xlsx"
-                 onchange="previewFile(this,'pub-preview')">
-        </div>
-        <div class="file-preview" id="pub-preview">
-          <span>📎</span><span id="pub-preview-name"></span>
-        </div>
+        <label>Description</label>
+        <textarea id="pub-desc" placeholder="Description courte..."></textarea>
       </div>
     </div>
     <div class="modal-footer">
@@ -762,7 +385,7 @@
     <div class="modal-body">
       <div class="form-field">
         <label>Nom du projet</label>
-        <input type="text" id="proj-name" placeholder="Ex: Construction école primaire de Bengbis">
+        <input type="text" id="proj-name" placeholder="Nom du projet">
       </div>
       <div class="form-row">
         <div class="form-field">
@@ -791,7 +414,7 @@
       </div>
       <div class="form-field">
         <label>Description</label>
-        <textarea id="proj-desc" placeholder="Décrivez le projet..."></textarea>
+        <textarea id="proj-desc" placeholder="Description du projet..."></textarea>
       </div>
     </div>
     <div class="modal-footer">
@@ -801,424 +424,213 @@
   </div>
 </div>
 
-<!-- Modal Photo -->
-<div class="modal-overlay" id="modal-photo">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>🖼️ Ajouter des photos</h3>
-      <button class="modal-close" onclick="closeModal('photo')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-field">
-        <label>Titre / Description</label>
-        <input type="text" id="photo-title" placeholder="Ex: Visite terrain du Président — Janvier 2026">
-      </div>
-      <div class="form-field">
-        <label>Catégorie</label>
-        <select id="photo-cat">
-          <option>Diaporama principal (Hero)</option>
-          <option>Événements officiels</option>
-          <option>Projets & Réalisations</option>
-          <option>Partenariats</option>
-          <option>Communes</option>
-          <option>Archives</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label>Sélectionner les photos</label>
-        <div class="upload-zone" onclick="document.getElementById('photo-files').click()">
-          <span class="uz-icon">📸</span>
-          <p>Cliquez ou glissez vos photos ici<br><small>JPG, PNG, WEBP — plusieurs fichiers acceptés</small></p>
-          <input type="file" id="photo-files" accept="image/*" multiple
-                 onchange="previewPhotos(this)">
-        </div>
-        <div id="photo-previews" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;"></div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-cancel" onclick="closeModal('photo')">Annuler</button>
-      <button class="btn-save" onclick="savePhotos()">💾 Ajouter à la médiathèque</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Document -->
-<div class="modal-overlay" id="modal-doc">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>📁 Ajouter un document</h3>
-      <button class="modal-close" onclick="closeModal('doc')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-field">
-        <label>Nom du document</label>
-        <input type="text" id="doc-name" placeholder="Ex: Budget 2026 — Conseil Régional du Sud">
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Catégorie</label>
-          <select id="doc-cat">
-            <option>Budget & Finances</option>
-            <option>Textes juridiques</option>
-            <option>Délibérations</option>
-            <option>Rapports</option>
-            <option>Appels d'offres</option>
-            <option>Formulaires</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Date</label>
-          <input type="date" id="doc-date">
-        </div>
-      </div>
-      <div class="form-field">
-        <label>Fichier</label>
-        <div class="upload-zone" onclick="document.getElementById('doc-file').click()">
-          <span class="uz-icon">📎</span>
-          <p>Cliquez pour choisir<br><small>PDF recommandé — max 20 Mo</small></p>
-          <input type="file" id="doc-file" onchange="previewFile(this,'doc-preview')">
-        </div>
-        <div class="file-preview" id="doc-preview">
-          <span>📎</span><span id="doc-preview-name"></span>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-cancel" onclick="closeModal('doc')">Annuler</button>
-      <button class="btn-save" onclick="saveDoc()">💾 Enregistrer</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== TOAST ===== -->
 <div class="toast" id="toast">✅ <span id="toast-msg">Sauvegardé</span></div>
 
 <script>
-// ===== GUARD: Si pas connecté, rediriger =====
+// Protection connexion
 if (sessionStorage.getItem('crs_admin') !== 'true') {
   window.location.href = 'index.html';
 }
 
-// ===== DATE =====
-const now = new Date();
+// Date
 document.getElementById('currentDate').textContent =
-  now.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
-
-// Pré-remplir les dates
+  new Date().toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
 document.querySelectorAll('input[type=date]').forEach(el => {
-  el.value = now.toISOString().split('T')[0];
+  el.value = new Date().toISOString().split('T')[0];
 });
 
-// ===== DONNÉES (stockées localement) =====
-function getData(key, def) {
-  try { return JSON.parse(localStorage.getItem('crs_'+key)) || def; } catch { return def; }
+// ===== APPELS API NEON =====
+async function apiGet(endpoint) {
+  const r = await fetch(`/.netlify/functions/${endpoint}`);
+  return r.json();
 }
-function setData(key, val) {
-  localStorage.setItem('crs_'+key, JSON.stringify(val));
+async function apiPost(endpoint, body) {
+  const r = await fetch(`/.netlify/functions/${endpoint}`, {
+    method: 'POST',
+    body: JSON.stringify(body)
+  });
+  return r.json();
 }
-
-// Données initiales
-const defaultActu = [
-  { id:1, date:'Décembre 2025', title:'Élection NDO Gervais — Président du Conseil Régional', cat:'Gouvernance', status:'Publié' },
-  { id:2, date:'Mai 2025', title:'Inauguration Phase II du Port Autonome de Kribi', cat:'Infrastructures', status:'Publié' },
-  { id:3, date:'Septembre 2025', title:'Mine de fer Grand-Zambi inaugurée', cat:'Mines & Industrie', status:'Publié' },
-  { id:4, date:'Août 2025', title:'Travaux ligne électrique 225 kV de Kribi démarrés', cat:'Énergie', status:'Publié' },
-];
-const defaultPub = [
-  { id:1, date:'2026-01-15', title:'Rapport d\'activités 2025', type:'Rapport d\'activité', file:'rapport-2025.pdf' },
-  { id:2, date:'2026-01-10', title:'Budget prévisionnel 2026', type:'Budget', file:'budget-2026.pdf' },
-  { id:3, date:'2025-12-22', title:'Délibération installation nouveau bureau', type:'Délibération', file:'delib-2025-001.pdf' },
-];
-const defaultProj = [
-  { id:1, name:'Port Autonome de Kribi — Phase II', budget:'400 Mds FCFA', progress:100, commune:'Kribi', status:'Achevé' },
-  { id:2, name:'Mine de fer Bipindi Grand-Zambi', budget:'640 Mds FCFA', progress:40, commune:'Bipindi', status:'En cours' },
-  { id:3, name:'Ligne électrique 225 kV Kribi', budget:'35 Mds FCFA', progress:30, commune:'Kribi', status:'En cours' },
-  { id:4, name:'Zone Économique Spéciale de Kribi', budget:'ND', progress:60, commune:'Kribi', status:'En cours' },
-];
-const defaultCommunes = [
-  { id:1, name:'Ebolowa 1er', dept:'Mvila', maire:'À renseigner', tel:'' },
-  { id:2, name:'Kribi 1er', dept:'Océan', maire:'À renseigner', tel:'' },
-  { id:3, name:'Sangmélima', dept:'Dja-et-Lobo', maire:'À renseigner', tel:'' },
-  { id:4, name:'Ambam', dept:'Vallée-du-Ntem', maire:'À renseigner', tel:'' },
-];
-const defaultPhotos = [
-  { id:1, name:'hero1.jpg', cat:'Diaporama principal (Hero)', size:'79 Ko' },
-  { id:2, name:'hero2.jpg', cat:'Événements officiels', size:'131 Ko' },
-  { id:3, name:'hero3.jpg', cat:'Partenariats', size:'50 Ko' },
-  { id:4, name:'hero4.jpg', cat:'Partenariats', size:'48 Ko' },
-  { id:5, name:'hero5.jpg', cat:'Diaporama principal (Hero)', size:'44 Ko' },
-];
-
-if (!localStorage.getItem('crs_actu'))  setData('actu', defaultActu);
-if (!localStorage.getItem('crs_pub'))   setData('pub',  defaultPub);
-if (!localStorage.getItem('crs_proj'))  setData('proj', defaultProj);
-if (!localStorage.getItem('crs_photos'))setData('photos', defaultPhotos);
-if (!localStorage.getItem('crs_communes')) setData('communes', defaultCommunes);
-if (!localStorage.getItem('crs_docs'))  setData('docs', []);
-
-// ===== RENDER TABLES =====
-function renderAll() {
-  renderActu(); renderPub(); renderProj(); renderPhotos(); renderDocs(); renderCommunes();
-  updateCounts();
+async function apiDelete(endpoint, id) {
+  const r = await fetch(`/.netlify/functions/${endpoint}`, {
+    method: 'DELETE',
+    body: JSON.stringify({ id })
+  });
+  return r.json();
 }
 
+// ===== BADGES =====
 function catBadge(cat) {
-  const map = {
-    'Gouvernance':'badge-blue','Infrastructures':'badge-green','Mines & Industrie':'badge-orange',
-    'Énergie':'badge-orange','Agriculture':'badge-green','Santé':'badge-blue',
-    'Transparence':'badge-purple','Budget':'badge-orange','Délibération':'badge-blue',
-    'Rapport d\'activité':'badge-green','Appel d\'offres':'badge-purple',
-  };
+  const map = { 'Gouvernance':'badge-blue','Infrastructures':'badge-green','Mines & Industrie':'badge-orange','Énergie':'badge-orange','Agriculture':'badge-green','Partenariats':'badge-blue' };
   return `<span class="badge ${map[cat]||'badge-gray'}">${cat}</span>`;
 }
 function statusBadge(s) {
   return s==='Publié'||s==='Achevé' ? `<span class="badge badge-green">${s}</span>`
        : s==='En cours'             ? `<span class="badge badge-blue">${s}</span>`
        : s==='Planifié'             ? `<span class="badge badge-orange">${s}</span>`
-       : s==='Brouillon'            ? `<span class="badge badge-gray">${s}</span>`
-       :                             `<span class="badge badge-gray">${s}</span>`;
+       :                              `<span class="badge badge-gray">${s}</span>`;
 }
 
-function renderActu() {
-  const data = getData('actu', []);
+// ===== CHARGER ACTUALITÉS =====
+async function loadActu() {
+  const res = await apiGet('actualites');
+  const data = res.data || [];
+  document.getElementById('count-actu').textContent = data.length;
+  document.getElementById('badge-actu').textContent = data.length;
   const html = data.map(a => `<tr>
-    <td><strong>${a.title}</strong></td>
-    <td>${catBadge(a.cat)}</td>
-    <td>${a.date}</td>
-    <td>${statusBadge(a.status)}</td>
+    <td><strong>${a.titre}</strong></td>
+    <td>${catBadge(a.categorie)}</td>
+    <td>${a.date_pub||''}</td>
+    <td>${statusBadge(a.statut)}</td>
     <td><div class="action-btns">
-      <button class="btn-edit" onclick="editActu(${a.id})">✏️ Modifier</button>
-      <button class="btn-del"  onclick="delItem('actu',${a.id})">🗑 Suppr.</button>
+      <button class="btn-del" onclick="delActu(${a.id})">🗑 Suppr.</button>
     </div></td>
   </tr>`).join('');
   document.getElementById('actu-body').innerHTML = html || '<tr><td colspan="5" style="text-align:center;padding:24px;color:#aaa;">Aucune actualité</td></tr>';
-  // Dashboard
   document.getElementById('dash-actu-body').innerHTML = data.slice(0,4).map(a=>`<tr>
-    <td>${a.title}</td><td>${catBadge(a.cat)}</td><td>${a.date}</td><td>${statusBadge(a.status)}</td>
-  </tr>`).join('');
+    <td>${a.titre}</td><td>${catBadge(a.categorie)}</td><td>${a.date_pub||''}</td><td>${statusBadge(a.statut)}</td>
+  </tr>`).join('') || '<tr><td colspan="4" style="text-align:center;padding:24px;color:#aaa;">Aucune actualité</td></tr>';
 }
 
-function renderPub() {
-  const data = getData('pub', []);
+// ===== CHARGER PUBLICATIONS =====
+async function loadPub() {
+  const res = await apiGet('publications');
+  const data = res.data || [];
+  document.getElementById('count-pub').textContent = data.length;
+  document.getElementById('badge-pub').textContent = data.length;
   const html = data.map(p => `<tr>
-    <td><strong>${p.title}</strong></td>
-    <td>${catBadge(p.type)}</td>
-    <td>${p.date}</td>
-    <td><span style="font-size:0.8rem;color:var(--text-light)">📎 ${p.file||'Aucun'}</span></td>
+    <td><strong>${p.titre}</strong></td>
+    <td>${catBadge(p.type_pub)}</td>
+    <td>${p.date_pub||''}</td>
     <td><div class="action-btns">
-      <button class="btn-edit" onclick="">✏️</button>
-      <button class="btn-del"  onclick="delItem('pub',${p.id})">🗑</button>
+      <button class="btn-del" onclick="delPub(${p.id})">🗑 Suppr.</button>
     </div></td>
   </tr>`).join('');
-  document.getElementById('pub-body').innerHTML = html || '<tr><td colspan="5" style="text-align:center;padding:24px;color:#aaa;">Aucune publication</td></tr>';
+  document.getElementById('pub-body').innerHTML = html || '<tr><td colspan="4" style="text-align:center;padding:24px;color:#aaa;">Aucune publication</td></tr>';
 }
 
-function renderProj() {
-  const data = getData('proj', []);
+// ===== CHARGER PROJETS =====
+async function loadProj() {
+  const res = await apiGet('projets');
+  const data = res.data || [];
+  document.getElementById('count-proj').textContent = data.length;
   const html = data.map(p => `<tr>
-    <td><strong>${p.name}</strong><br><small style="color:var(--text-light)">${p.commune}</small></td>
-    <td>${p.budget}</td>
+    <td><strong>${p.nom}</strong><br><small style="color:var(--text-light)">${p.commune||''}</small></td>
+    <td>${p.budget||'ND'}</td>
     <td>
       <div style="background:#eee;border-radius:4px;height:8px;width:120px;overflow:hidden;">
-        <div style="height:100%;width:${p.progress}%;background:linear-gradient(90deg,var(--secondary),var(--accent));border-radius:4px;"></div>
+        <div style="height:100%;width:${p.avancement||0}%;background:linear-gradient(90deg,var(--secondary),var(--accent));border-radius:4px;"></div>
       </div>
-      <small>${p.progress}%</small>
+      <small>${p.avancement||0}%</small>
     </td>
-    <td>${statusBadge(p.status)}</td>
+    <td>${statusBadge(p.statut)}</td>
     <td><div class="action-btns">
-      <button class="btn-edit">✏️</button>
-      <button class="btn-del" onclick="delItem('proj',${p.id})">🗑</button>
+      <button class="btn-del" onclick="delProj(${p.id})">🗑 Suppr.</button>
     </div></td>
   </tr>`).join('');
-  document.getElementById('proj-body').innerHTML = html;
+  document.getElementById('proj-body').innerHTML = html || '<tr><td colspan="5" style="text-align:center;padding:24px;color:#aaa;">Aucun projet</td></tr>';
 }
 
-function renderPhotos() {
-  const data = getData('photos', []);
-  const EMOJI = {'Diaporama principal (Hero)':'🌄','Événements officiels':'🎖️','Projets & Réalisations':'🏗️','Partenariats':'🤝','Communes':'📍','Archives':'📦'};
-  const html = data.map(p => `
-    <div class="photo-item">
-      <div class="photo-thumb">${EMOJI[p.cat]||'🖼️'}</div>
-      <div class="photo-info">
-        <div class="photo-name">${p.name}</div>
-        <div class="photo-size">${p.cat} · ${p.size}</div>
-        <div class="photo-actions">
-          <button class="btn-del" onclick="delItem('photos',${p.id})" style="font-size:0.72rem;">🗑 Suppr.</button>
-        </div>
-      </div>
-    </div>`).join('');
-  document.getElementById('photo-grid').innerHTML = html || '<p style="text-align:center;padding:40px;color:#aaa;">Aucune photo</p>';
-}
-
-function renderDocs() {
-  const data = getData('docs', []);
-  if (!data.length) {
-    document.getElementById('doc-list').innerHTML = `
-      <div style="text-align:center;padding:40px;color:var(--text-light);">
-        <span style="font-size:3rem;">📂</span><br><br>
-        Aucun document. Cliquez sur "Ajouter" pour commencer.
-      </div>`;
-    return;
+// ===== SAUVEGARDER =====
+async function saveActu() {
+  const titre = document.getElementById('actu-title').value.trim();
+  if (!titre) { alert('Veuillez saisir un titre.'); return; }
+  const res = await apiPost('actualites', {
+    titre,
+    categorie: document.getElementById('actu-cat').value,
+    date_pub: document.getElementById('actu-date').value,
+    statut: document.getElementById('actu-status').value,
+    resume: document.getElementById('actu-resume').value,
+  });
+  if (res.success) {
+    closeModal('actu');
+    showToast('Actualité publiée avec succès ✓');
+    document.getElementById('actu-title').value = '';
+    document.getElementById('actu-resume').value = '';
+    loadActu();
+  } else {
+    showToast('Erreur : ' + res.error, true);
   }
-  const ICONS = {'Budget & Finances':'💰','Textes juridiques':'⚖️','Délibérations':'📋','Rapports':'📊','Appels d\'offres':'📢','Formulaires':'📝'};
-  const html = data.map(d => `
-    <div class="doc-item">
-      <div class="doc-icon doc-pdf">${ICONS[d.cat]||'📄'}</div>
-      <div class="doc-info">
-        <div class="doc-name">${d.name}</div>
-        <div class="doc-meta">${d.cat} · ${d.date}</div>
-      </div>
-      <div class="action-btns">
-        <button class="btn-del" onclick="delItem('docs',${d.id})">🗑</button>
-      </div>
-    </div>`).join('');
-  document.getElementById('doc-list').innerHTML = html;
 }
 
-function renderCommunes() {
-  const data = getData('communes', []);
-  const html = data.map(c => `<tr>
-    <td><strong>${c.name}</strong></td>
-    <td>${c.dept}</td>
-    <td>${c.maire}</td>
-    <td>${c.tel||'—'}</td>
-    <td><button class="btn-edit">✏️ Modifier</button></td>
-  </tr>`).join('');
-  document.getElementById('commune-body').innerHTML = html;
-}
-
-function updateCounts() {
-  const a = getData('actu',[]).length;
-  const p = getData('pub',[]).length;
-  const ph= getData('photos',[]).length;
-  const d = getData('docs',[]).length;
-  document.getElementById('count-actu').textContent = a;
-  document.getElementById('count-pub').textContent  = p;
-  document.getElementById('count-photos').textContent = ph;
-  document.getElementById('count-docs').textContent = d;
-  document.getElementById('badge-actu').textContent = a;
-  document.getElementById('badge-pub').textContent  = p;
-}
-
-// ===== SAVE ACTIONS =====
-function saveActu() {
-  const t = document.getElementById('actu-title').value.trim();
-  if (!t) { alert('Veuillez saisir un titre.'); return; }
-  const data = getData('actu', []);
-  data.unshift({
-    id: Date.now(),
-    date: new Date(document.getElementById('actu-date').value).toLocaleDateString('fr-FR',{month:'long',year:'numeric'}),
-    title: t,
-    cat: document.getElementById('actu-cat').value,
-    status: document.getElementById('actu-status').value,
+async function savePub() {
+  const titre = document.getElementById('pub-title').value.trim();
+  if (!titre) { alert('Veuillez saisir un titre.'); return; }
+  const res = await apiPost('publications', {
+    titre,
+    type_pub: document.getElementById('pub-type').value,
+    date_pub: document.getElementById('pub-date').value,
+    description: document.getElementById('pub-desc').value,
+    fichier: '',
   });
-  setData('actu', data);
-  closeModal('actu');
-  renderAll();
-  showToast('Actualité publiée avec succès ✓');
-  document.getElementById('actu-title').value = '';
-  document.getElementById('actu-excerpt').value = '';
+  if (res.success) {
+    closeModal('pub');
+    showToast('Publication enregistrée ✓');
+    document.getElementById('pub-title').value = '';
+    loadPub();
+  } else {
+    showToast('Erreur : ' + res.error, true);
+  }
 }
 
-function savePub() {
-  const t = document.getElementById('pub-title').value.trim();
-  if (!t) { alert('Veuillez saisir un titre.'); return; }
-  const file = document.getElementById('pub-file').files[0];
-  const data = getData('pub', []);
-  data.unshift({
-    id: Date.now(),
-    date: document.getElementById('pub-date').value,
-    title: t,
-    type: document.getElementById('pub-type').value,
-    file: file ? file.name : 'Aucun fichier',
-  });
-  setData('pub', data);
-  closeModal('pub');
-  renderAll();
-  showToast('Publication enregistrée ✓');
-}
-
-function saveProj() {
-  const n = document.getElementById('proj-name').value.trim();
-  if (!n) { alert('Veuillez saisir un nom.'); return; }
-  const data = getData('proj', []);
-  data.push({
-    id: Date.now(),
-    name: n,
-    budget: document.getElementById('proj-budget').value || 'ND',
-    progress: parseInt(document.getElementById('proj-progress').value)||0,
+async function saveProj() {
+  const nom = document.getElementById('proj-name').value.trim();
+  if (!nom) { alert('Veuillez saisir un nom.'); return; }
+  const res = await apiPost('projets', {
+    nom,
+    budget: document.getElementById('proj-budget').value,
+    avancement: parseInt(document.getElementById('proj-progress').value)||0,
     commune: document.getElementById('proj-commune').value,
-    status: document.getElementById('proj-status').value,
+    statut: document.getElementById('proj-status').value,
+    description: document.getElementById('proj-desc').value,
   });
-  setData('proj', data);
-  closeModal('proj');
-  renderAll();
-  showToast('Projet enregistré ✓');
+  if (res.success) {
+    closeModal('proj');
+    showToast('Projet enregistré ✓');
+    document.getElementById('proj-name').value = '';
+    loadProj();
+  } else {
+    showToast('Erreur : ' + res.error, true);
+  }
 }
 
-function savePhotos() {
-  const files = document.getElementById('photo-files').files;
-  const cat = document.getElementById('photo-cat').value;
-  const title = document.getElementById('photo-title').value;
-  if (!files.length) { alert('Sélectionnez au moins une photo.'); return; }
-  const data = getData('photos', []);
-  Array.from(files).forEach(f => {
-    data.push({ id: Date.now()+Math.random(), name: title||f.name, cat, size: (f.size/1024).toFixed(0)+' Ko' });
-  });
-  setData('photos', data);
-  closeModal('photo');
-  renderAll();
-  showToast(`${files.length} photo(s) ajoutée(s) ✓`);
-  document.getElementById('photo-previews').innerHTML = '';
+// ===== SUPPRIMER =====
+async function delActu(id) {
+  if (!confirm('Supprimer cette actualité ?')) return;
+  await apiDelete('actualites', id);
+  showToast('Supprimé', true);
+  loadActu();
 }
-
-function saveDoc() {
-  const n = document.getElementById('doc-name').value.trim();
-  if (!n) { alert('Veuillez saisir un nom.'); return; }
-  const data = getData('docs', []);
-  data.unshift({
-    id: Date.now(),
-    name: n,
-    cat: document.getElementById('doc-cat').value,
-    date: document.getElementById('doc-date').value,
-  });
-  setData('docs', data);
-  closeModal('doc');
-  renderAll();
-  showToast('Document ajouté ✓');
+async function delPub(id) {
+  if (!confirm('Supprimer cette publication ?')) return;
+  await apiDelete('publications', id);
+  showToast('Supprimé', true);
+  loadPub();
 }
-
-function delItem(key, id) {
-  if (!confirm('Supprimer cet élément ?')) return;
-  const data = getData(key, []).filter(x => x.id !== id);
-  setData(key, data);
-  renderAll();
-  showToast('Élément supprimé', true);
+async function delProj(id) {
+  if (!confirm('Supprimer ce projet ?')) return;
+  await apiDelete('projets', id);
+  showToast('Supprimé', true);
+  loadProj();
 }
 
 // ===== MODAL =====
 function openModal(name) { document.getElementById('modal-'+name).classList.add('open'); }
-function closeModal(name){ document.getElementById('modal-'+name).classList.remove('open'); }
-// Fermer en cliquant l'overlay
+function closeModal(name) { document.getElementById('modal-'+name).classList.remove('open'); }
 document.querySelectorAll('.modal-overlay').forEach(o => {
   o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
 });
 
 // ===== NAVIGATION =====
-const sectionTitles = {
-  dashboard:'Vue d\'ensemble', actualites:'Actualités', publications:'Publications',
-  projets:'Projets', photos:'Médiathèque', documents:'Documents',
-  communes:'Communes', parametres:'Paramètres'
-};
-function showSection(name) {
+const titles = { dashboard:"Vue d'ensemble", actualites:"Actualités", publications:"Publications", projets:"Projets", parametres:"Paramètres" };
+function showSection(name, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('sec-'+name).classList.add('active');
-  document.getElementById('pageTitle').textContent = sectionTitles[name]||name;
-  event.currentTarget.classList.add('active');
+  document.getElementById('pageTitle').textContent = titles[name]||name;
+  if(el) el.classList.add('active');
 }
 
-// ===== SEARCH FILTER =====
 function filterTable(input, tbodyId) {
   const q = input.value.toLowerCase();
   document.querySelectorAll('#'+tbodyId+' tr').forEach(tr => {
@@ -1226,27 +638,6 @@ function filterTable(input, tbodyId) {
   });
 }
 
-// ===== FILE PREVIEW =====
-function previewFile(input, previewId) {
-  const f = input.files[0]; if (!f) return;
-  const el = document.getElementById(previewId);
-  const nameEl = document.getElementById(previewId+'-name');
-  if (nameEl) nameEl.textContent = f.name + ' (' + (f.size/1024).toFixed(0) + ' Ko)';
-  el.classList.add('show');
-}
-function previewPhotos(input) {
-  const cont = document.getElementById('photo-previews');
-  cont.innerHTML = '';
-  Array.from(input.files).slice(0,9).forEach(f => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      cont.innerHTML += `<img src="${e.target.result}" style="width:100%;height:80px;object-fit:cover;border-radius:8px;">`;
-    };
-    reader.readAsDataURL(f);
-  });
-}
-
-// ===== TOAST =====
 function showToast(msg, isError) {
   const t = document.getElementById('toast');
   document.getElementById('toast-msg').textContent = msg;
@@ -1254,7 +645,6 @@ function showToast(msg, isError) {
   setTimeout(() => t.className = 'toast'+(isError?' error':''), 3000);
 }
 
-// ===== LOGOUT =====
 function logout() {
   if (confirm('Se déconnecter ?')) {
     sessionStorage.removeItem('crs_admin');
@@ -1262,8 +652,10 @@ function logout() {
   }
 }
 
-// ===== INIT =====
-renderAll();
+// ===== INITIALISATION =====
+loadActu();
+loadPub();
+loadProj();
 </script>
 </body>
 </html>
