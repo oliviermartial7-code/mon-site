@@ -1,0 +1,1478 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conseil Régional du Sud — South Regional Council</title>
+  <meta name="description" content="Le SUD, une région d'avenir, de solidarité et de bonheur partagé.">
+  <meta property="og:title" content="Conseil Régional du Sud">
+  <meta property="og:description" content="Le SUD, une région d'avenir, de solidarité et de bonheur partagé.">
+  <meta property="og:url" content="https://conseilregionalsud.github.io">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+
+  <style>
+    /* ===== CSS VARIABLES — Charte graphique CRS ===== */
+    :root {
+      --primary:    #1A237E;  /* Bleu de Minuit */
+      --secondary:  #0288D1;  /* Bleu Azur */
+      --accent:     #7CB342;  /* Vert Vitalité */
+      --gold:       #FFC107;  /* Or camerounais */
+      --dark:       #0D1642;
+      --light:      #F5F7FA;
+      --white:      #FFFFFF;
+      --text:       #1a1a2e;
+      --text-light: #5a6a85;
+      --red-cam:    #CE1126;
+      --green-cam:  #007A5E;
+      --yellow-cam: #FCD116;
+      --font-head:  'Montserrat', sans-serif;
+      --font-body:  'Open Sans', sans-serif;
+      --shadow:     0 4px 24px rgba(26,35,126,0.15);
+      --shadow-lg:  0 16px 48px rgba(26,35,126,0.22);
+      --radius:     12px;
+      --radius-lg:  24px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.78rem;
+      font-family: var(--font-head);
+      padding: 6px 0;
+    }
+    .topbar .tb-inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .topbar a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent); }
+    .topbar .tb-left { display: flex; gap: 20px; align-items: center; }
+    .topbar .tb-right { display: flex; gap: 14px; align-items: center; }
+    .tb-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
+    /* Drapeau Cameroun mini */
+    .cam-flag { display: flex; height: 13px; width: 26px; border-radius: 2px; overflow: hidden; }
+    .cam-flag span { flex: 1; }
+    .cam-flag .f-green  { background: var(--green-cam); }
+    .cam-flag .f-red    { background: var(--red-cam); position: relative; }
+    .cam-flag .f-yellow { background: var(--yellow-cam); }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(26,35,126,0.12);
+    }
+    .nav-inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 0;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; text-decoration: none; flex-shrink: 0;
+    }
+    /* Logo CRS dessiné en CSS */
+    .logo-mark {
+      width: 52px; height: 52px; position: relative; flex-shrink: 0;
+    }
+    .logo-mark svg { width: 100%; height: 100%; }
+    .logo-text { line-height: 1.2; }
+    .logo-text .lt-main {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--primary);
+      display: block;
+      letter-spacing: -0.02em;
+    }
+    .logo-text .lt-sub {
+      font-family: var(--font-head);
+      font-weight: 500;
+      font-size: 0.63rem;
+      color: var(--secondary);
+      display: block;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    /* Drapeau cam dans nav */
+    .logo-flag {
+      display: flex; height: 6px; width: 100%; border-radius: 1px; overflow: hidden; margin-top: 3px;
+    }
+    .logo-flag span { flex: 1; }
+
+    .nav-links {
+      display: flex; list-style: none; margin-left: auto; gap: 0;
+    }
+    .nav-links li a {
+      display: block; padding: 20px 14px;
+      font-family: var(--font-head); font-weight: 600; font-size: 0.8rem;
+      color: var(--primary); text-decoration: none;
+      letter-spacing: 0.03em; text-transform: uppercase;
+      position: relative; transition: color var(--transition);
+    }
+    .nav-links li a::after {
+      content: ''; position: absolute; bottom: 0; left: 14px; right: 14px;
+      height: 3px; background: var(--accent); border-radius: 3px 3px 0 0;
+      transform: scaleX(0); transition: transform var(--transition);
+    }
+    .nav-links li a:hover, .nav-links li a.active { color: var(--secondary); }
+    .nav-links li a:hover::after, .nav-links li a.active::after { transform: scaleX(1); }
+
+    .nav-cta {
+      margin-left: 20px;
+      background: var(--secondary); color: var(--white) !important;
+      padding: 10px 20px !important; border-radius: 6px;
+      font-size: 0.8rem !important; transition: background var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--primary) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; margin-left: auto; }
+    .hamburger span { width: 24px; height: 2px; background: var(--primary); border-radius: 2px; transition: var(--transition); }
+
+    /* ===== HERO SLIDESHOW ===== */
+    .hero {
+      position: relative; height: 100vh; min-height: 620px;
+      overflow: hidden; background: var(--dark);
+    }
+    .slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.2s ease-in-out;
+    }
+    .slide.active { opacity: 1; }
+    .slide::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(13,22,66,0.82) 0%,
+        rgba(2,136,209,0.35) 50%,
+        rgba(124,179,66,0.2) 100%);
+    }
+    /* Particules géométriques décoratives */
+    .hero-geo {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+    }
+    .hero-geo::before {
+      content: '';
+      position: absolute; right: -100px; top: -100px;
+      width: 600px; height: 600px;
+      border: 2px solid rgba(124,179,66,0.2);
+      border-radius: 50%;
+    }
+    .hero-geo::after {
+      content: '';
+      position: absolute; right: 50px; top: 50px;
+      width: 400px; height: 400px;
+      border: 1px solid rgba(2,136,209,0.2);
+      border-radius: 50%;
+    }
+    .hero-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; align-items: center;
+      max-width: 1400px; margin: 0 auto; padding: 0 60px;
+    }
+    .hero-text { max-width: 680px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(124,179,66,0.2);
+      border: 1px solid rgba(124,179,66,0.4);
+      border-radius: 100px;
+      padding: 6px 16px; margin-bottom: 24px;
+      font-family: var(--font-head); font-size: 0.75rem; font-weight: 600;
+      color: #a8d672; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-title {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--white); line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-title .hl-green { color: var(--accent); }
+    .hero-title .hl-blue  { color: #64b5f6; }
+    .hero-subtitle {
+      font-size: 1.1rem; color: rgba(255,255,255,0.8);
+      line-height: 1.6; margin-bottom: 36px; max-width: 520px;
+      font-style: italic;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--secondary); color: var(--white);
+      padding: 14px 32px; border-radius: 8px; text-decoration: none;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.03em; transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(2,136,209,0.4);
+    }
+    .btn-primary:hover { background: #0277bd; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(2,136,209,0.5); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5); color: var(--white);
+      padding: 12px 30px; border-radius: 8px; text-decoration: none;
+      font-family: var(--font-head); font-weight: 600; font-size: 0.9rem;
+      transition: var(--transition); backdrop-filter: blur(4px);
+    }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(124,179,66,0.15); }
+
+    /* Slide counter & dots */
+    .slide-dots {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; gap: 10px;
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(255,255,255,0.4); cursor: pointer;
+      transition: var(--transition); border: none;
+    }
+    .dot.active { background: var(--accent); transform: scale(1.3); }
+
+    /* Slide caption bottom-right */
+    .slide-caption {
+      position: absolute; bottom: 36px; right: 60px; z-index: 3;
+      font-size: 0.75rem; color: rgba(255,255,255,0.6);
+      font-style: italic; max-width: 280px; text-align: right;
+      font-family: var(--font-head);
+    }
+
+    /* Social float on hero */
+    .hero-social {
+      position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      z-index: 3; display: flex; flex-direction: column; gap: 0;
+    }
+    .hs-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      text-decoration: none; transition: var(--transition);
+    }
+    .hs-link.fb { background: #1877F2; }
+    .hs-link.wa { background: #25D366; }
+    .hs-link.yt { background: #FF0000; }
+    .hs-link:hover { width: 60px; }
+    .hs-link svg { width: 20px; height: 20px; stroke: white; fill: none; }
+    /* WhatsApp icon needs fill */
+    .hs-link.wa svg { fill: white; stroke: none; }
+    .hs-link.fb svg { fill: white; stroke: none; }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--primary);
+      padding: 0;
+      position: relative; z-index: 10;
+    }
+    .stats-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(6, 1fr);
+    }
+    .stat-item {
+      padding: 20px 16px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-value {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: 1.6rem; color: var(--white);
+      display: block; line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.7rem; color: rgba(255,255,255,0.65);
+      font-family: var(--font-head); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-top: 4px; display: block;
+    }
+    .stat-icon { color: var(--accent); margin-bottom: 6px; display: block; font-size: 0.9rem; }
+
+    /* ===== SECTIONS COMMUNES ===== */
+    section { padding: 80px 0; }
+    .section-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--primary); line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .section-lead {
+      font-size: 1.05rem; color: var(--text-light);
+      line-height: 1.7; max-width: 640px; margin-bottom: 48px;
+    }
+    .divider-accent {
+      width: 56px; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      border-radius: 4px; margin-bottom: 20px;
+    }
+
+    /* ===== SECTION RÉGION (cards) ===== */
+    #region { background: var(--light); }
+    .region-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .region-info-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 36px; box-shadow: var(--shadow);
+    }
+    .info-row {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 0; border-bottom: 1px solid #eef0f5;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(2,136,209,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-icon svg { width: 20px; height: 20px; stroke: var(--secondary); }
+    .info-label { font-weight: 700; font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+    .info-value { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--primary); margin-top: 2px; }
+
+    .region-text h3 {
+      font-family: var(--font-head); font-weight: 700;
+      font-size: 1.3rem; color: var(--primary); margin-bottom: 12px;
+    }
+    .region-text p { color: var(--text-light); line-height: 1.7; margin-bottom: 16px; }
+    .potentialite-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px;
+    }
+    .pot-card {
+      background: var(--white); border-radius: 10px; padding: 16px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .pot-card .pot-title { font-family: var(--font-head); font-weight: 700; font-size: 0.85rem; color: var(--primary); }
+    .pot-card .pot-desc { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+
+    /* ===== SECTION INSTITUTIONS ===== */
+    #institutions { background: var(--white); }
+    .exec-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #0d3468 100%);
+      border-radius: var(--radius-lg); padding: 40px; color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .exec-card::before {
+      content: 'CRS';
+      position: absolute; right: -20px; top: -20px;
+      font-family: var(--font-head); font-weight: 900; font-size: 8rem;
+      color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none;
+    }
+    .exec-photo {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 3px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 2rem;
+    }
+    .exec-name { font-family: var(--font-head); font-weight: 800; font-size: 1.4rem; margin-bottom: 4px; }
+    .exec-role { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px; }
+    .exec-mandate {
+      display: inline-block;
+      background: rgba(124,179,66,0.2); border: 1px solid rgba(124,179,66,0.4);
+      border-radius: 100px; padding: 4px 16px;
+      font-size: 0.78rem; font-family: var(--font-head); font-weight: 600;
+      color: #a8d672; letter-spacing: 0.05em;
+    }
+    .bureau-list { list-style: none; margin-top: 24px; }
+    .bureau-list li {
+      display: flex; gap: 10px; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.85rem; color: rgba(255,255,255,0.8);
+    }
+    .bureau-list li::before { content: '•'; color: var(--accent); font-size: 1rem; }
+    .legal-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;
+    }
+    .legal-card {
+      background: var(--light); border-radius: var(--radius); padding: 24px;
+      border-top: 4px solid var(--secondary);
+    }
+    .legal-card h4 { font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px; }
+    .legal-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+    /* ===== ACTUALITÉS ===== */
+    #actualites { background: var(--light); }
+    .news-grid {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 24px;
+    }
+    .news-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      overflow: hidden; box-shadow: var(--shadow);
+      transition: var(--transition); cursor: pointer;
+    }
+    .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .news-card.featured { grid-row: span 2; }
+    .news-card-img {
+      height: 200px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .news-card.featured .news-card-img { height: 300px; }
+    .news-card-img .news-icon-bg {
+      font-size: 4rem; opacity: 0.25; position: absolute;
+    }
+    .news-cat {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--accent); color: var(--white);
+      font-size: 0.7rem; font-family: var(--font-head); font-weight: 700;
+      padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .news-body { padding: 24px; }
+    .news-date { font-size: 0.75rem; color: var(--text-light); font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .news-title { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--primary); line-height: 1.4; margin-bottom: 8px; }
+    .news-card.featured .news-title { font-size: 1.2rem; }
+    .news-excerpt { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+    .news-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.8rem; font-weight: 700; color: var(--secondary); text-decoration: none; font-family: var(--font-head); }
+    .news-link:hover { color: var(--primary); }
+
+    /* ===== PROJETS ===== */
+    #projets { background: var(--white); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+    }
+    .project-card {
+      background: var(--light); border-radius: var(--radius-lg); padding: 28px;
+      position: relative; overflow: hidden;
+      border: 1px solid #e8ecf4; transition: var(--transition);
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); background: var(--white); }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .project-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-icon-wrap svg { width: 26px; height: 26px; stroke: white; }
+    .project-status {
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 0.72rem; font-family: var(--font-head); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .status-done { background: rgba(124,179,66,0.15); color: #558b2f; }
+    .status-wip  { background: rgba(2,136,209,0.12); color: #0277bd; }
+    .project-name { font-family: var(--font-head); font-weight: 800; font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
+    .project-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+    .project-budget { font-size: 0.85rem; font-family: var(--font-head); font-weight: 700; color: var(--secondary); margin-bottom: 14px; }
+    .progress-bar {
+      height: 8px; border-radius: 8px; background: rgba(0,0,0,0.08);
+      position: relative; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 8px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .progress-label {
+      display: flex; justify-content: space-between; margin-top: 6px;
+      font-size: 0.72rem; font-family: var(--font-head); font-weight: 600; color: var(--text-light);
+    }
+
+    /* ===== COMMUNES ===== */
+    #communes { background: var(--dark); color: var(--white); }
+    #communes .section-title { color: var(--white); }
+    #communes .section-lead { color: rgba(255,255,255,0.7); }
+    .dept-tabs {
+      display: flex; gap: 0; margin-bottom: 36px; border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .dept-tab {
+      flex: 1; padding: 14px 20px; text-align: center;
+      font-family: var(--font-head); font-weight: 600; font-size: 0.85rem;
+      color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04);
+      cursor: pointer; transition: var(--transition); border: none;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .dept-tab:last-child { border-right: none; }
+    .dept-tab:hover { background: rgba(2,136,209,0.15); color: var(--white); }
+    .dept-tab.active { background: var(--secondary); color: var(--white); }
+    .dept-panel { display: none; }
+    .dept-panel.active { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .commune-chip {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 12px 16px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.85);
+      font-family: var(--font-head); font-weight: 500;
+      display: flex; align-items: center; gap: 8px;
+      transition: var(--transition);
+    }
+    .commune-chip:hover { background: rgba(2,136,209,0.2); border-color: var(--secondary); }
+    .commune-chip::before { content: '📍'; font-size: 0.85rem; }
+
+    /* ===== SECTION CONTACT ===== */
+    #contact { background: var(--light); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--white); border-radius: var(--radius); padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .contact-item-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-item-icon svg { width: 22px; height: 22px; stroke: white; }
+    .contact-item-label { font-size: 0.75rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; font-family: var(--font-head); }
+    .contact-item-value { font-family: var(--font-head); font-weight: 600; color: var(--primary); }
+    .contact-item-value a { color: var(--secondary); text-decoration: none; }
+    .contact-item-value a:hover { text-decoration: underline; }
+
+    .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .social-btn {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px; border-radius: var(--radius); text-decoration: none;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.9rem;
+      transition: var(--transition); color: var(--white);
+    }
+    .social-btn svg { width: 22px; height: 22px; }
+    .social-btn.facebook { background: #1877F2; }
+    .social-btn.facebook:hover { background: #0d65d9; transform: translateY(-2px); }
+    .social-btn.whatsapp { background: #25D366; }
+    .social-btn.whatsapp:hover { background: #1fb856; transform: translateY(-2px); }
+    .social-btn svg { fill: white; stroke: none; }
+    .social-btn.email { background: var(--primary); grid-column: span 2; }
+    .social-btn.email:hover { background: var(--dark); transform: translateY(-2px); }
+    .social-btn.email svg { fill: none; stroke: white; }
+
+    /* ===== PARTNERS ===== */
+    .partners-section {
+      background: var(--white);
+      border-top: 1px solid #eef0f5;
+      padding: 40px 0;
+    }
+    .partners-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+    .partners-label {
+      text-align: center; font-family: var(--font-head); font-weight: 600;
+      font-size: 0.75rem; color: var(--text-light); text-transform: uppercase;
+      letter-spacing: 0.15em; margin-bottom: 24px;
+    }
+    .partners-row {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;
+    }
+    .partner-badge {
+      padding: 8px 20px; border-radius: 100px;
+      border: 2px solid #e0e5f0;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.82rem;
+      color: var(--primary); transition: var(--transition);
+    }
+    .partner-badge:hover { border-color: var(--secondary); color: var(--secondary); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.7);
+      padding: 60px 0 0;
+    }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+    }
+    .footer-brand .fb-logo { font-family: var(--font-head); font-weight: 900; font-size: 1.3rem; color: var(--white); margin-bottom: 8px; }
+    .footer-brand .fb-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+    .footer-brand .fb-devise { font-style: italic; color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.5; }
+    .footer-flag {
+      display: flex; height: 8px; width: 80px; border-radius: 2px;
+      overflow: hidden; margin: 16px 0;
+    }
+    .footer-flag span { flex: 1; }
+    .footer-col h5 {
+      font-family: var(--font-head); font-weight: 700; font-size: 0.85rem;
+      color: var(--white); text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 16px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 48px; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px; max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .footer-bottom .momo-badges { display: flex; gap: 8px; align-items: center; }
+    .momo-badge {
+      padding: 4px 12px; border-radius: 6px;
+      font-family: var(--font-head); font-weight: 800; font-size: 0.72rem;
+    }
+    .momo-mtn  { background: #FFCB00; color: #000; }
+    .momo-orange { background: #FF6600; color: #fff; }
+
+    /* ===== SCROLL TO TOP ===== */
+    #scrollTop {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--secondary); color: var(--white);
+      border: none; cursor: pointer; box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: var(--transition); pointer-events: none;
+    }
+    #scrollTop.visible { opacity: 1; pointer-events: all; }
+    #scrollTop:hover { background: var(--primary); transform: translateY(-3px); }
+    #scrollTop svg { width: 22px; height: 22px; stroke: white; }
+
+    /* ===== TICKER ACTUALITÉ ===== */
+    .ticker-wrap {
+      background: var(--secondary); overflow: hidden;
+      padding: 10px 0;
+    }
+    .ticker-label {
+      display: inline-block; background: var(--primary);
+      font-family: var(--font-head); font-weight: 700; font-size: 0.75rem;
+      color: var(--white); padding: 4px 20px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      position: absolute; z-index: 1; left: 0;
+    }
+    .ticker-container { position: relative; }
+    .ticker-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: ticker 35s linear infinite;
+    }
+    .ticker-item {
+      display: inline-block; padding: 0 60px;
+      font-family: var(--font-head); font-weight: 600; font-size: 0.82rem;
+      color: var(--white); letter-spacing: 0.02em;
+    }
+    .ticker-item::before { content: '◆'; margin-right: 16px; color: rgba(255,255,255,0.5); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .stats-inner { grid-template-columns: repeat(3, 1fr); }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .news-card.featured { grid-column: span 2; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); box-shadow: var(--shadow); padding: 8px 0; }
+      .nav-links.open li a { padding: 12px 24px; }
+      .hero-content { padding: 0 20px; }
+      .hero-social { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .region-grid, .contact-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-card.featured { grid-column: span 1; }
+      .dept-panel.active { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .legal-grid { grid-template-columns: 1fr; }
+      .potentialite-grid { grid-template-columns: 1fr; }
+      .social-grid { grid-template-columns: 1fr; }
+      .social-btn.email { grid-column: span 1; }
+      .slide-caption { display: none; }
+    }
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr; }
+      .dept-panel.active { grid-template-columns: 1fr; }
+      .dept-tabs { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="tb-inner">
+      <div class="tb-left">
+        <div class="cam-flag" title="République du Cameroun">
+          <span class="f-green"></span>
+          <span class="f-red"></span>
+          <span class="f-yellow"></span>
+        </div>
+        <span>République du Cameroun — Paix · Travail · Patrie</span>
+        <div class="tb-divider"></div>
+        <a href="tel:+237222284440">(+237) 222 28 44 40</a>
+        <a href="mailto:contact@conseilregionalsud.cm">contact@conseilregionalsud.cm</a>
+      </div>
+      <div class="tb-right">
+        <a href="#" id="lang-btn" title="Switch to English">EN</a>
+        <div class="tb-divider"></div>
+        <a href="https://www.facebook.com/share/18ckuwk695/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://wa.me/237699000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="http://www.crs.cm" target="_blank">www.crs.cm</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#accueil" class="nav-logo">
+        <div class="logo-mark">
+          <!-- Logo CRS SVG fidèle à la charte -->
+          <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="25" fill="#e8edf8" stroke="#c8d0e8" stroke-width="0.5"/>
+            <!-- Anneau tricolore -->
+            <circle cx="26" cy="26" r="25" fill="none" stroke="#007A5E" stroke-width="3" stroke-dasharray="40 120" stroke-dashoffset="0"/>
+            <circle cx="26" cy="26" r="25" fill="none" stroke="#CE1126" stroke-width="3" stroke-dasharray="40 120" stroke-dashoffset="-40"/>
+            <circle cx="26" cy="26" r="25" fill="none" stroke="#FCD116" stroke-width="3" stroke-dasharray="40 120" stroke-dashoffset="-80"/>
+            <!-- Texte CRS -->
+            <text x="26" y="22" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="900" font-size="10" fill="#1A237E">CRS</text>
+            <!-- Arc vert décoratif -->
+            <path d="M10 30 Q26 16 42 30" fill="none" stroke="#7CB342" stroke-width="3" stroke-linecap="round"/>
+            <!-- Drapeau bande -->
+            <rect x="10" y="33" width="10" height="8" fill="#007A5E" rx="0"/>
+            <rect x="20" y="33" width="12" height="8" fill="#CE1126" rx="0"/>
+            <rect x="32" y="33" width="10" height="8" fill="#FCD116" rx="0"/>
+            <polygon points="26,35 27.2,38.6 31,38.6 28,40.6 29.2,44.2 26,42.2 22.8,44.2 24,40.6 21,38.6 24.8,38.6" fill="#FCD116" transform="scale(0.4) translate(39,48)"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="lt-main">Conseil Régional du Sud</span>
+          <span class="lt-sub">South Regional Council</span>
+          <div class="logo-flag">
+            <span style="background:#007A5E"></span>
+            <span style="background:#CE1126"></span>
+            <span style="background:#FCD116"></span>
+          </div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil" class="active">Accueil</a></li>
+        <li><a href="#region">La Région</a></li>
+        <li><a href="#institutions">Institutions</a></li>
+        <li><a href="#actualites">Actualités</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#communes">Communes</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TICKER ===== -->
+  <div class="ticker-wrap">
+    <div class="ticker-container">
+      <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-item">Élection du nouveau Président NDO Gervais — Décembre 2025</div>
+        <div class="ticker-item">Port de Kribi Phase II inaugurée — 350 Mds FCFA de recettes douanières 2025</div>
+        <div class="ticker-item">Mine Grand-Zambi inaugurée — 640 Mds FCFA, 5000+ emplois attendus</div>
+        <div class="ticker-item">Ligne 225 kV Kribi — Travaux en cours, mise en service fin 2026</div>
+        <div class="ticker-item">Objectif PAK 2026 : 400 milliards FCFA de recettes douanières</div>
+        <div class="ticker-item">Budget régional 2026 — Consultez nos publications officielles</div>
+        <!-- Duplication pour boucle infinie -->
+        <div class="ticker-item">Élection du nouveau Président NDO Gervais — Décembre 2025</div>
+        <div class="ticker-item">Port de Kribi Phase II inaugurée — 350 Mds FCFA de recettes douanières 2025</div>
+        <div class="ticker-item">Mine Grand-Zambi inaugurée — 640 Mds FCFA, 5000+ emplois attendus</div>
+        <div class="ticker-item">Ligne 225 kV Kribi — Travaux en cours, mise en service fin 2026</div>
+        <div class="ticker-item">Objectif PAK 2026 : 400 milliards FCFA de recettes douanières</div>
+        <div class="ticker-item">Budget régional 2026 — Consultez nos publications officielles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HERO SLIDESHOW ===== -->
+  <section class="hero" id="accueil">
+    <!-- Social sidebar -->
+    <div class="hero-social">
+      <a href="https://www.facebook.com/share/18ckuwk695/" target="_blank" rel="noopener" class="hs-link fb" title="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://wa.me/237699000000" target="_blank" rel="noopener" class="hs-link wa" title="WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+
+    <!-- Slides -->
+    <div class="slide active" style="background-image: url('assets/images/hero2.jpg')"></div>
+    <div class="slide" style="background-image: url('assets/images/hero3.jpg')"></div>
+    <div class="slide" style="background-image: url('assets/images/hero4.jpg')"></div>
+    <div class="slide" style="background-image: url('assets/images/hero5.jpg')"></div>
+    <div class="slide" style="background-image: url('assets/images/hero1.jpg')"></div>
+
+    <div class="hero-geo"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">Conseil Régional du Sud · South Regional Council</div>
+        <h1 class="hero-title">
+          Le <span class="hl-green">SUD</span>,<br>
+          une Région d'<span class="hl-blue">avenir</span><br>
+          et de solidarité
+        </h1>
+        <p class="hero-subtitle">
+          "Le SUD, une région d'avenir, de solidarité et de bonheur partagé."<br>
+          — Devise officielle du Conseil Régional du Sud
+        </p>
+        <div class="hero-actions">
+          <a href="#projets" class="btn-primary">Nos Projets</a>
+          <a href="#actualites" class="btn-outline">Actualités</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-dots" id="slideDots">
+      <button class="dot active" onclick="goSlide(0)"></button>
+      <button class="dot" onclick="goSlide(1)"></button>
+      <button class="dot" onclick="goSlide(2)"></button>
+      <button class="dot" onclick="goSlide(3)"></button>
+      <button class="dot" onclick="goSlide(4)"></button>
+    </div>
+    <div class="slide-caption" id="slideCaption">Coopération institutionnelle — Conseil Régional du Sud</div>
+  </section>
+
+  <!-- ===== STATS BAR ===== -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-icon">🗺️</span>
+        <span class="stat-value">47 110</span>
+        <span class="stat-label">Km² de superficie</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">👥</span>
+        <span class="stat-value">514 336</span>
+        <span class="stat-label">Habitants</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">🏛️</span>
+        <span class="stat-value">29</span>
+        <span class="stat-label">Communes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">📍</span>
+        <span class="stat-value">4</span>
+        <span class="stat-label">Départements</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">📈</span>
+        <span class="stat-value">350 Mds</span>
+        <span class="stat-label">FCFA recettes PAK 2025</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">⛏️</span>
+        <span class="stat-value">5 000+</span>
+        <span class="stat-label">Emplois Mine Grand-Zambi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION LA RÉGION ===== -->
+  <section id="region">
+    <div class="section-inner">
+      <div class="region-grid">
+        <div>
+          <div class="section-tag">Identité territoriale</div>
+          <div class="divider-accent"></div>
+          <h2 class="section-title">La Région du Sud</h2>
+          <p class="section-lead">Créée officiellement le 22 décembre 2022, la Région du Sud couvre 47 110 km² de forêt dense équatoriale et dispose d'un positionnement stratégique exceptionnel : façade atlantique à Kribi, frontières avec le Gabon, la Guinée Équatoriale et le Congo.</p>
+          <div class="potentialite-grid">
+            <div class="pot-card">
+              <div class="pot-title">⚓ Port de Kribi</div>
+              <div class="pot-desc">Hub logistique international, 29% des recettes douanières nationales</div>
+            </div>
+            <div class="pot-card">
+              <div class="pot-title">⛏️ Mines de fer</div>
+              <div class="pot-desc">Bipindi Grand-Zambi — 4M t/an, investissement 640 Mds FCFA</div>
+            </div>
+            <div class="pot-card">
+              <div class="pot-title">🌿 Forêts & REDD+</div>
+              <div class="pot-desc">Réserve du Dja (UNESCO), Parc Campo-Ma'an, forêts communautaires</div>
+            </div>
+            <div class="pot-card">
+              <div class="pot-title">🌾 Agriculture</div>
+              <div class="pot-desc">Cacao, palmier à huile, hévéa, pêche et tourisme balnéaire</div>
+            </div>
+            <div class="pot-card">
+              <div class="pot-title">🌊 Tourisme</div>
+              <div class="pot-desc">Chutes de la Lobé, plages de Kribi, Campo, patrimoine Beti-Baka</div>
+            </div>
+            <div class="pot-card">
+              <div class="pot-title">🤝 Zone 3 Frontières</div>
+              <div class="pot-desc">Kyé-Ossi — carrefour commercial Cameroun-Gabon-Guinée Équatoriale</div>
+            </div>
+          </div>
+        </div>
+        <div class="region-info-card">
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div>
+              <div class="info-label">Capitale régionale</div>
+              <div class="info-value">Ebolowa</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div>
+              <div class="info-label">Superficie</div>
+              <div class="info-value">47 110 km²</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div>
+              <div class="info-label">Population</div>
+              <div class="info-value">514 336 habitants</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+            <div>
+              <div class="info-label">Départements</div>
+              <div class="info-value">Mvila · Océan · Dja-et-Lobo · Vallée-du-Ntem</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div>
+              <div class="info-label">Création CTD officielle</div>
+              <div class="info-value">22 décembre 2022</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="info-label">Siège</div>
+              <div class="info-value">BP 648, Ebolowa</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4"/><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg></div>
+            <div>
+              <div class="info-label">Communes</div>
+              <div class="info-value">29 communes · 4 chefs-lieux</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION INSTITUTIONS ===== -->
+  <section id="institutions">
+    <div class="section-inner">
+      <div class="section-tag">Gouvernance locale</div>
+      <div class="divider-accent"></div>
+      <h2 class="section-title">Institutions du Conseil Régional</h2>
+      <p class="section-lead">Le Conseil Régional du Sud est composé de 90 conseillers régionaux : 70 délégués des départements et 20 représentants du commandement traditionnel, garants de l'ancrage sociologique de la gouvernance régionale.</p>
+
+      <div style="display:grid; grid-template-columns: 1fr 2fr; gap:32px; margin-bottom:40px;">
+        <div class="exec-card">
+          <div class="exec-photo">🤝</div>
+          <div class="exec-name">NDO Gervais</div>
+          <div class="exec-role">Président du Conseil Régional du Sud</div>
+          <div class="exec-mandate">Mandat 2025–2030</div>
+          <ul class="bureau-list">
+            <li>2 Vice-présidents</li>
+            <li>2 Questeurs</li>
+            <li>2 Secrétaires de bureau</li>
+            <li>90 Conseillers régionaux</li>
+            <li>20 Représentants traditionnels</li>
+          </ul>
+        </div>
+        <div>
+          <div class="legal-grid">
+            <div class="legal-card">
+              <h4>📜 Loi n°2019/024</h4>
+              <p>Code Général des CTD du 24 décembre 2019 — fondement juridique de l'autonomie régionale et du transfert de compétences.</p>
+            </div>
+            <div class="legal-card">
+              <h4>⚖️ Libre Administration</h4>
+              <p>La Région jouit de la personnalité morale de droit public et d'une autonomie administrative et financière (Art. 8 CGCTD).</p>
+            </div>
+            <div class="legal-card">
+              <h4>🔄 Transfert de Compétences</h4>
+              <p>L'État transfère les prérogatives ET les ressources humaines, matérielles et financières (DGD — Dotation Générale de la Décentralisation).</p>
+            </div>
+            <div class="legal-card">
+              <h4>🏛️ Contrôle de Légalité</h4>
+              <p>Exercé a posteriori par le Gouverneur. Le silence vaut consentement passé 15 jours (Art. 74 CGCTD) — garantie contre l'immobilisme.</p>
+            </div>
+            <div class="legal-card">
+              <h4>🎯 Pacte Social</h4>
+              <p>Document de référence du Conseil Régional du Sud orientant les priorités vers les besoins réels des populations locales.</p>
+            </div>
+            <div class="legal-card">
+              <h4>🌍 Domaines d'action</h4>
+              <p>Éducation secondaire · Santé · Agriculture · Forêts & Environnement · Urbanisme · Eau · Culture & Sport.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTUALITÉS ===== -->
+  <section id="actualites">
+    <div class="section-inner">
+      <div class="section-tag">Fil d'information</div>
+      <div class="divider-accent"></div>
+      <h2 class="section-title">Actualités de la Région du Sud</h2>
+      <p class="section-lead">Suivez les dernières nouvelles institutionnelles, projets et événements du Conseil Régional du Sud et de ses 29 communes.</p>
+
+      <div class="news-grid">
+        <!-- Article vedette -->
+        <div class="news-card featured">
+          <div class="news-card-img" style="background: linear-gradient(135deg, #1A237E, #0d3468);">
+            <div class="news-icon-bg">🗳️</div>
+            <div class="news-cat">Gouvernance</div>
+          </div>
+          <div class="news-body">
+            <div class="news-date">Décembre 2025</div>
+            <div class="news-title">Élection du nouveau Président du Conseil Régional du Sud — NDO Gervais</div>
+            <div class="news-excerpt">Lors des élections des présidents et bureaux des Conseils Régionaux tenues le 16 décembre 2025, NDO Gervais a été élu nouveau Président du Conseil Régional du Sud pour le mandat 2025-2030, marquant un nouveau chapitre dans la gouvernance régionale.</div>
+            <a href="#" class="news-link">Lire la suite →</a>
+          </div>
+        </div>
+        <!-- Articles secondaires -->
+        <div class="news-card">
+          <div class="news-card-img" style="background: linear-gradient(135deg, #0277bd, #01579b);">
+            <div class="news-icon-bg">⚓</div>
+            <div class="news-cat">Infrastructures</div>
+          </div>
+          <div class="news-body">
+            <div class="news-date">Mai 2025</div>
+            <div class="news-title">Inauguration Phase II du Port de Kribi</div>
+            <div class="news-excerpt">715m de quais, 400 Mds FCFA — le PAK génère désormais 29% des recettes douanières nationales.</div>
+            <a href="#" class="news-link">Lire →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img" style="background: linear-gradient(135deg, #558b2f, #33691e);">
+            <div class="news-icon-bg">⛏️</div>
+            <div class="news-cat">Mines & Industrie</div>
+          </div>
+          <div class="news-body">
+            <div class="news-date">Septembre 2025</div>
+            <div class="news-title">Mine de fer Grand-Zambi inaugurée</div>
+            <div class="news-excerpt">640 Mds FCFA — 500 employés camerounais déjà en poste — montée en puissance vers 4M t/an.</div>
+            <a href="#" class="news-link">Lire →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img" style="background: linear-gradient(135deg, #f57c00, #e65100);">
+            <div class="news-icon-bg">⚡</div>
+            <div class="news-cat">Énergie</div>
+          </div>
+          <div class="news-body">
+            <div class="news-date">Août 2025</div>
+            <div class="news-title">Ligne 225 kV : Kribi futur hub énergétique</div>
+            <div class="news-excerpt">35 Mds FCFA — travaux SINOHYDRO/STECOL — mise en service prévue fin 2026 pour alimenter la zone industrielle.</div>
+            <a href="#" class="news-link">Lire →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img" style="background: linear-gradient(135deg, #6a1b9a, #4a148c);">
+            <div class="news-icon-bg">📊</div>
+            <div class="news-cat">Transparence</div>
+          </div>
+          <div class="news-body">
+            <div class="news-date">Janvier 2025</div>
+            <div class="news-title">Alerte : Faible exécution budgétaire 2024</div>
+            <div class="news-excerpt">Taux d'ordonnancement de 7,30% — le Gouverneur Nguele Nguele appelle à l'amélioration de la performance des investissements publics.</div>
+            <a href="#" class="news-link">Lire →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJETS ===== -->
+  <section id="projets" style="background: var(--light);">
+    <div class="section-inner">
+      <div class="section-tag">Développement territorial</div>
+      <div class="divider-accent"></div>
+      <h2 class="section-title">Grands Projets Structurants</h2>
+      <p class="section-lead">La Région du Sud est au cœur des plus grands investissements du Cameroun. Suivez l'avancement des projets qui transforment notre territoire.</p>
+
+      <div class="projects-grid">
+        <!-- PAK -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #0288D1, #01579b);">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20l4-8 4 8"/><path d="M14 20l4-8 4 8"/><path d="M3 10h18"/><path d="M12 2v6"/></svg>
+            </div>
+            <span class="project-status status-done">✓ Achevé</span>
+          </div>
+          <div class="project-name">Port Autonome de Kribi — Phase II</div>
+          <div class="project-desc">2e terminal à conteneurs avec 715 mètres de quais. Le PAK assure 29% des recettes douanières du Cameroun et s'impose comme le 2e pôle douanier national avec 350 Mds FCFA de recettes en 2025.</div>
+          <div class="project-budget">💰 ~400 milliards FCFA · Financement : Eximbank of China (75%)</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: linear-gradient(90deg, #0288D1, #7CB342);"></div></div>
+          <div class="progress-label"><span>Avancement</span><span>100%</span></div>
+        </div>
+
+        <!-- Mine -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #7CB342, #33691e);">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <span class="project-status status-wip">⏳ En cours</span>
+          </div>
+          <div class="project-name">Mine de Fer Bipindi — Grand-Zambi</div>
+          <div class="project-desc">Inaugurée le 22 septembre 2025 par le Premier Ministre Dion Ngute. Capacité : 4 millions de tonnes de concentré de fer par an. Plus de 500 Camerounais déjà employés, objectif 5 000+ emplois.</div>
+          <div class="project-budget">💰 ~640 milliards FCFA · Sinosteel + Afriland First Bank</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+          <div class="progress-label"><span>Montée en puissance</span><span>40%</span></div>
+        </div>
+
+        <!-- Électricité -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #FFA726, #e65100);">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span class="project-status status-wip">⏳ En cours</span>
+          </div>
+          <div class="project-name">Ligne Électrique 225 kV — Kribi</div>
+          <div class="project-desc">Travaux démarrés le 6 août 2025. Une ligne haute tension et un poste de transformation pour alimenter les industries de la zone industrialo-portuaire. Kribi : futur 1er hub énergétique industriel du Cameroun.</div>
+          <div class="project-budget">💰 35 milliards FCFA · SINOHYDRO / STECOL · Mise en service fin 2026</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 30%; background: linear-gradient(90deg, #FFA726, #f57c00);"></div></div>
+          <div class="progress-label"><span>Travaux en cours</span><span>30%</span></div>
+        </div>
+
+        <!-- ZES -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #AB47BC, #4a148c);">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <span class="project-status status-wip">⏳ En cours</span>
+          </div>
+          <div class="project-name">Zone Économique Spéciale de Kribi</div>
+          <div class="project-desc">Pôle industrialo-portuaire multifilières : usine de bitume (All Bitumen PLC), agro-industrie SODIPRACO, logistique KAMLOG MAD. Un consortium de 4 entreprises européennes en lice pour le contrat bitume.</div>
+          <div class="project-budget">💰 Investissements multiples · Objectif : hub régional d'Afrique Centrale</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 60%; background: linear-gradient(90deg, #AB47BC, #6a1b9a);"></div></div>
+          <div class="progress-label"><span>Développement</span><span>60%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMMUNES ===== -->
+  <section id="communes">
+    <div class="section-inner">
+      <div class="section-tag">Organisation territoriale</div>
+      <div class="divider-accent"></div>
+      <h2 class="section-title">Les 29 Communes de la Région</h2>
+      <p class="section-lead">Organisées en 4 départements, les communes de la Région du Sud couvrent des territoires allant des forêts équatoriales enclavées aux zones côtières dynamiques de Kribi.</p>
+
+      <div class="dept-tabs">
+        <button class="dept-tab active" onclick="showDept('mvila')">Mvila<br><small>Ebolowa</small></button>
+        <button class="dept-tab" onclick="showDept('ocean')">Océan<br><small>Kribi</small></button>
+        <button class="dept-tab" onclick="showDept('dja')">Dja-et-Lobo<br><small>Sangmélima</small></button>
+        <button class="dept-tab" onclick="showDept('ntem')">Vallée-du-Ntem<br><small>Ambam</small></button>
+      </div>
+
+      <div id="panel-mvila" class="dept-panel active">
+        <div class="commune-chip">Ebolowa 1er</div>
+        <div class="commune-chip">Ebolowa 2e</div>
+        <div class="commune-chip">Mvangan</div>
+        <div class="commune-chip">Biwong-Bulu</div>
+        <div class="commune-chip">Mengong</div>
+        <div class="commune-chip">Ngoulemakong</div>
+        <div class="commune-chip">Efoulan</div>
+        <div class="commune-chip">Meyo-Centre</div>
+      </div>
+      <div id="panel-ocean" class="dept-panel">
+        <div class="commune-chip">Kribi 1er</div>
+        <div class="commune-chip">Kribi 2e</div>
+        <div class="commune-chip">Campo</div>
+        <div class="commune-chip">Akom II</div>
+        <div class="commune-chip">Bipindi</div>
+        <div class="commune-chip">Lokoundjé</div>
+        <div class="commune-chip">Mvengue</div>
+        <div class="commune-chip">Niete</div>
+        <div class="commune-chip">Grand Batanga</div>
+      </div>
+      <div id="panel-dja" class="dept-panel">
+        <div class="commune-chip">Sangmélima</div>
+        <div class="commune-chip">Bengbis</div>
+        <div class="commune-chip">Djoum</div>
+        <div class="commune-chip">Meyomessala</div>
+        <div class="commune-chip">Meyomessi</div>
+        <div class="commune-chip">Mintom</div>
+        <div class="commune-chip">Oveng</div>
+        <div class="commune-chip">Zoétélé</div>
+      </div>
+      <div id="panel-ntem" class="dept-panel">
+        <div class="commune-chip">Ambam</div>
+        <div class="commune-chip">Kyé-Ossi 🌐</div>
+        <div class="commune-chip">Ma'an</div>
+        <div class="commune-chip">Olamze</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-tag">Nous rejoindre</div>
+      <div class="divider-accent"></div>
+      <h2 class="section-title">Contactez le Conseil Régional</h2>
+      <p class="section-lead">Notre équipe est disponible pour répondre à vos questions, demandes institutionnelles et partenariats. Contactez-nous via les canaux officiels ou retrouvez-nous sur les réseaux sociaux.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Adresse du siège</div>
+              <div class="contact-item-value">BP 648, Ebolowa<br>Région du Sud, Cameroun</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.61a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .73h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Téléphones</div>
+              <div class="contact-item-value">
+                <a href="tel:+237222284440">(+237) 222 28 44 40</a><br>
+                <a href="tel:+237699000000">(+237) 699 00 00 00</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email officiel</div>
+              <div class="contact-item-value"><a href="mailto:contact@conseilregionalsud.cm">contact@conseilregionalsud.cm</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="2 12 7 12"/><polyline points="17 12 22 12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Site web</div>
+              <div class="contact-item-value"><a href="http://www.crs.cm" target="_blank">www.crs.cm</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--primary); margin-bottom: 20px;">Suivez-nous sur les réseaux sociaux</h3>
+          <div class="social-grid">
+            <a href="https://www.facebook.com/share/18ckuwk695/" target="_blank" rel="noopener" class="social-btn facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook officiel
+            </a>
+            <a href="https://wa.me/237699000000" target="_blank" rel="noopener" class="social-btn whatsapp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <a href="mailto:contact@conseilregionalsud.cm" class="social-btn email">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Envoyer un email officiel
+            </a>
+          </div>
+
+          <div style="margin-top: 24px; background: var(--white); border-radius: var(--radius); padding: 24px; border: 1px solid #e0e5f0;">
+            <h4 style="font-family: var(--font-head); font-weight: 700; color: var(--primary); margin-bottom: 12px; font-size: 0.95rem;">📱 Paiement Mobile Money</h4>
+            <p style="font-size: 0.82rem; color: var(--text-light); line-height: 1.6; margin-bottom: 14px;">Pour les services payants en ligne, le Conseil accepte les paiements via :</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <span class="momo-badge momo-mtn">MTN MoMo</span>
+              <span class="momo-badge momo-orange">Orange Money</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTENAIRES ===== -->
+  <div class="partners-section">
+    <div class="partners-inner">
+      <div class="partners-label">Nos partenaires institutionnels et techniques</div>
+      <div class="partners-row">
+        <div class="partner-badge">MINDDEVEL</div>
+        <div class="partner-badge">FEICOM</div>
+        <div class="partner-badge">PNDP</div>
+        <div class="partner-badge">PAK</div>
+        <div class="partner-badge">Banque Mondiale</div>
+        <div class="partner-badge">AFD</div>
+        <div class="partner-badge">GIZ</div>
+        <div class="partner-badge">WWF</div>
+        <div class="partner-badge">WCS</div>
+        <div class="partner-badge">BEAC</div>
+        <div class="partner-badge">Afriland First Bank</div>
+        <div class="partner-badge">Sinosteel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="fb-logo">Conseil Régional du Sud</div>
+        <div class="fb-sub">South Regional Council · www.crs.cm</div>
+        <div class="footer-flag">
+          <span style="background:#007A5E"></span>
+          <span style="background:#CE1126"></span>
+          <span style="background:#FCD116"></span>
+        </div>
+        <div class="fb-devise">"Le SUD, une région d'avenir,<br>de solidarité et de bonheur partagé."</div>
+      </div>
+      <div class="footer-col">
+        <h5>La Région</h5>
+        <ul>
+          <li><a href="#region">Présentation</a></li>
+          <li><a href="#institutions">Institutions</a></li>
+          <li><a href="#communes">Les 29 Communes</a></li>
+          <li><a href="#region">Potentialités</a></li>
+          <li><a href="#region">Peuples & Culture</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Projets</h5>
+        <ul>
+          <li><a href="#projets">Port de Kribi</a></li>
+          <li><a href="#projets">Mine Grand-Zambi</a></li>
+          <li><a href="#projets">Ligne 225 kV</a></li>
+          <li><a href="#projets">ZES Kribi</a></li>
+          <li><a href="#projets">PNDP / PDL-1425</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacts</h5>
+        <ul>
+          <li><a href="tel:+237222284440">(+237) 222 28 44 40</a></li>
+          <li><a href="mailto:contact@conseilregionalsud.cm">contact@crs.cm</a></li>
+          <li><a href="https://www.facebook.com/share/18ckuwk695/" target="_blank">Facebook</a></li>
+          <li><a href="https://wa.me/237699000000" target="_blank">WhatsApp</a></li>
+          <li><a href="http://www.crs.cm" target="_blank">www.crs.cm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Conseil Régional du Sud — Tous droits réservés · République du Cameroun</p>
+      <div class="momo-badges">
+        <span style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-right:8px;">Paiements acceptés :</span>
+        <span class="momo-badge momo-mtn">MTN MoMo</span>
+        <span class="momo-badge momo-orange">Orange Money</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script>
+    // ===== SLIDESHOW =====
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const captions = [
+      "Coopération institutionnelle — Conseil Régional du Sud",
+      "Partenariats pour le développement de la Région",
+      "Délégations officielles — South Regional Council",
+      "Sessions et délibérations du Conseil Régional",
+      "Le Président du Conseil en visite de terrain"
+    ];
+    let current = 0, timer;
+
+    function goSlide(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      document.getElementById('slideCaption').textContent = captions[current] || '';
+    }
+
+    function nextSlide() { goSlide((current + 1) % slides.length); }
+
+    timer = setInterval(nextSlide, 5000);
+
+    // Pause on hover
+    document.querySelector('.hero').addEventListener('mouseenter', () => clearInterval(timer));
+    document.querySelector('.hero').addEventListener('mouseleave', () => { timer = setInterval(nextSlide, 5000); });
+
+    // ===== NAVBAR SCROLL =====
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 80;
+      navbar.style.boxShadow = scrolled ? '0 4px 30px rgba(26,35,126,0.2)' : '0 2px 20px rgba(26,35,126,0.12)';
+      document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // ===== ACTIVE NAV LINK =====
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let found = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) found = s.id; });
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + found) a.classList.add('active');
+      });
+    });
+
+    // ===== HAMBURGER MENU =====
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // ===== DEPARTEMENT TABS =====
+    const panels = { mvila: 'mvila', ocean: 'ocean', dja: 'dja', ntem: 'ntem' };
+    function showDept(id) {
+      document.querySelectorAll('.dept-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.dept-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      event.target.closest('.dept-tab').classList.add('active');
+    }
+
+    // ===== PROGRESS BAR ANIMATION (Intersection Observer) =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.progress-fill').forEach(bar => {
+            const w = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => { bar.style.width = w; }, 100);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.project-card').forEach(c => observer.observe(c));
+
+    // ===== SMOOTH ANCHOR =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
